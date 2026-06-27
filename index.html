@@ -1,1078 +1,1074 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html class="dark" lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Falak Khan — Android Developer & SDE Aspirant</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Falak Khan | Android &amp; Backend Developer</title>
+<meta name="description" content="Falak Khan — Android Developer & SDE Aspirant. Building high-performance mobile experiences and robust backend systems."/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;500;700&family=Fira+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "outline-variant": "#3b4b37",
+          "on-surface-variant": "#b9ccb2",
+          "surface-bright": "#3a3939",
+          "primary": "#ebffe2",
+          "primary-fixed-dim": "#3DDC84",
+          "surface-container-low": "#222222",
+          "surface-container-high": "#2a2a2a",
+          "surface-container-highest": "#353534",
+          "surface-container": "#242424",
+          "surface-container-lowest": "#121212",
+          "surface": "#1A1A1A",
+          "surface-variant": "#353534",
+          "on-primary": "#003907",
+          "on-primary-fixed": "#002203",
+          "primary-container": "#3DDC84",
+          "inverse-surface": "#e5e2e1",
+          "inverse-on-surface": "#313030",
+          "terminal-gray": "#1A1A1A",
+          "on-background": "#e5e2e1",
+          "on-surface": "#e5e2e1",
+          "java-red": "#E76F00",
+          "kotlin-blue": "#7F52FF",
+          "outline": "#84967e",
+          "crt-phosphor": "#3DDC84",
+          "java-blue": "#007396",
+          "error": "#ffb4ab",
+          "secondary": "#ffd393",
+          "background": "#121212",
+          "secondary-container": "#fdaf00",
+          "amber": "#FFB000",
+        },
+        fontFamily: {
+          "mono": ["JetBrains Mono", "monospace"],
+          "headline": ["Space Mono", "monospace"],
+          "body": ["Fira Sans", "sans-serif"],
+        },
+      },
+    },
+  }
+</script>
 <style>
-/* ═══════════════════════════════════════════════
-   THEME VARIABLES
-═══════════════════════════════════════════════ */
-:root {
-  --bg:      #f7fbff;
-  --bg2:     #f0f7ff;
-  --card:    #ffffff;
-  --accent:  #0f62fe;
-  --accent2: #6929c4;
-  --accent3: #00a651;
-  --accent4: #fa4d56;
-  --accent5: #0072c3;
-  --text:    #101828;
-  --muted:   #5b6472;
-  --border:  rgba(15,98,254,0.16);
-  --pill-bg: #edf3ff;
-  --pill-hover: #d0e2ff;
-  --nav-bg:  rgba(247,251,255,0.93);
-  --nav-border: rgba(15,98,254,0.12);
-  --skill-bg: #ffffff;
-  --edu-bg:   #ffffff;
-  --shadow-color: rgba(15,98,254,0.09);
-  --tag-green-color: #007a33;
-  --tag-yellow-color: #c16800;
-  --fbadge-bg: #ffffff;
-  --theme-transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-[data-theme="dark"] {
-  --bg:      #070d1a;
-  --bg2:     #0d1626;
-  --card:    #111c30;
-  --accent:  #4589ff;
-  --accent2: #be95ff;
-  --accent3: #42be65;
-  --accent4: #ff8389;
-  --accent5: #33b1ff;
-  --text:    #e4ecf7;
-  --muted:   #8a9ab5;
-  --border:  rgba(69,137,255,0.22);
-  --pill-bg: rgba(69,137,255,0.12);
-  --pill-hover: rgba(69,137,255,0.22);
-  --nav-bg:  rgba(7,13,26,0.92);
-  --nav-border: rgba(69,137,255,0.15);
-  --skill-bg: #111c30;
-  --edu-bg:   #111c30;
-  --shadow-color: rgba(0,0,0,0.35);
-  --tag-green-color: #42be65;
-  --tag-yellow-color: #f1c21b;
-  --fbadge-bg: #162035;
-}
-
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
-  background:var(--bg); color:var(--text);
-  font-family:'DM Sans',sans-serif; overflow-x:hidden;
-  transition: var(--theme-transition);
-}
-
-/* ── THEME TOGGLE ── */
-.theme-toggle {
-  background:none; border:2px solid var(--border);
-  border-radius:50px; cursor:pointer;
-  padding:7px 14px; font-size:.85rem; font-weight:700;
-  color:var(--text); display:flex; align-items:center; gap:.4rem;
-  transition:all .25s ease; white-space:nowrap;
-}
-.theme-toggle:hover {
-  background:var(--accent); color:#fff; border-color:var(--accent);
-  transform:scale(1.05);
-}
-.theme-toggle .icon { font-size:1rem; transition:transform .4s ease; }
-[data-theme="dark"] .theme-toggle .icon { transform:rotate(180deg); }
-
-/* ── NAV ── */
-nav {
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:15px 6vw;
-  background:var(--nav-bg); backdrop-filter:blur(16px);
-  border-bottom:2px solid var(--nav-border);
-  box-shadow:0 2px 20px var(--shadow-color);
-  transition: var(--theme-transition);
-}
-.logo {
-  font-family:'Syne',sans-serif; font-weight:800; font-size:1.3rem;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-}
-.nav-right { display:flex; align-items:center; gap:2rem; }
-.nav-links { display:flex; gap:2rem; list-style:none; }
-.nav-links a { color:var(--muted); text-decoration:none; font-size:.9rem; font-weight:600; transition:color .2s; }
-.nav-links a:hover { color:var(--accent); }
-
-/* ── HERO ── */
-#hero {
-  min-height:100vh;
-  display:grid; grid-template-columns:1fr 1fr;
-  align-items:center;
-  padding:100px 8vw 60px; gap:3rem;
-  position:relative; overflow:hidden;
-}
-#hero::before {
-  content:''; position:absolute; width:600px; height:600px;
-  background:radial-gradient(circle,rgba(15,98,254,0.12) 0%,transparent 70%);
-  top:-150px; right:-100px; pointer-events:none;
-  animation:blobmove 8s ease-in-out infinite alternate;
-}
-#hero::after {
-  content:''; position:absolute; width:400px; height:400px;
-  background:radial-gradient(circle,rgba(105,41,196,0.09) 0%,transparent 70%);
-  bottom:50px; left:-80px; pointer-events:none;
-  animation:blobmove2 10s ease-in-out infinite alternate;
-}
-[data-theme="dark"] #hero::before { background:radial-gradient(circle,rgba(69,137,255,0.17) 0%,transparent 70%); }
-[data-theme="dark"] #hero::after  { background:radial-gradient(circle,rgba(190,149,255,0.12) 0%,transparent 70%); }
-
-@keyframes blobmove  { 0%{transform:translate(0,0) scale(1)} 100%{transform:translate(40px,-60px) scale(1.15)} }
-@keyframes blobmove2 { 0%{transform:translate(0,0)} 100%{transform:translate(-30px,40px) scale(1.1)} }
-
-.hero-text { animation:fadein .9s ease both; }
-@keyframes fadein { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:none} }
-
-.greeting {
-  font-size:.95rem; font-weight:600; letter-spacing:.12em;
-  color:var(--accent3); text-transform:uppercase; margin-bottom:1rem;
-  display:flex; align-items:center; gap:.6rem;
-}
-.greeting::before { content:''; display:block; width:32px; height:2px; background:var(--accent3); }
-
-.hero-name {
-  font-family:'Syne',sans-serif; font-weight:800;
-  font-size:clamp(2.6rem,5vw,4.5rem); line-height:1.05; margin-bottom:.6rem;
-}
-.hero-name span { background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-
-.hero-title-dual { display:flex; flex-wrap:wrap; align-items:center; gap:.5rem; margin-bottom:1.4rem; }
-.role { font-size:.9rem; font-weight:700; letter-spacing:.05em; padding:5px 14px; border-radius:50px; }
-.role-android { background:rgba(0,166,81,.12); color:var(--accent3); border:1.5px solid rgba(0,166,81,.3); }
-.role-sde { background:rgba(15,98,254,.12); color:var(--accent); border:1.5px solid rgba(15,98,254,.28); }
-.role-sep { color:var(--muted); font-size:.85rem; }
-.hero-desc { font-size:1rem; line-height:1.75; color:var(--muted); max-width:500px; margin-bottom:2rem; }
-
-.hero-btns { display:flex; gap:1rem; flex-wrap:wrap; }
-.btn {
-  padding:12px 28px; border-radius:50px; font-size:.9rem; font-weight:600;
-  cursor:pointer; text-decoration:none; transition:transform .2s,box-shadow .2s;
-  display:inline-flex; align-items:center; gap:.5rem;
-}
-.btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(15,98,254,.3); }
-.btn-primary { background:linear-gradient(135deg,var(--accent),#6929c4); color:#fff; border:none; }
-.btn-outline  { background:transparent; color:var(--text); border:2px solid var(--border); }
-.btn-outline:hover { border-color:var(--accent); color:var(--accent); }
-
-.social-row { display:flex; gap:.65rem; margin-top:1.8rem; flex-wrap:wrap; }
-.social-pill {
-  display:inline-flex; align-items:center; gap:.45rem;
-  padding:7px 14px; border-radius:50px;
-  background:var(--pill-bg); border:1.5px solid var(--border);
-  text-decoration:none; color:var(--muted); font-size:.82rem;
-  transition:border-color .2s,color .2s,transform .2s,background .2s;
-}
-.social-pill:hover { border-color:var(--accent); color:var(--accent); background:var(--pill-hover); transform:translateY(-2px); }
-
-/* ── HERO ILLUSTRATION ── */
-.hero-illo { display:flex; justify-content:center; align-items:center; animation:fadein 1.1s .2s ease both; }
-.illo-wrap {
-  position:relative; width:430px; height:440px;
-  display:flex; align-items:center; justify-content:center;
-}
-.illo-bg-blob {
-  position:absolute; inset:0;
-  background:linear-gradient(135deg,rgba(15,98,254,.12),rgba(0,166,81,.08));
-  border-radius:62% 38% 55% 45% / 50% 44% 56% 50%;
-  animation:morphblob 7s ease-in-out infinite alternate; z-index:0;
-}
-[data-theme="dark"] .illo-bg-blob { background:linear-gradient(135deg,rgba(69,137,255,.18),rgba(66,190,101,.1)); }
-@keyframes morphblob {
-  0%  { border-radius:62% 38% 55% 45% / 50% 44% 56% 50%; transform:scale(1); }
-  50% { border-radius:44% 56% 38% 62% / 56% 50% 44% 50%; transform:scale(1.04); }
-  100%{ border-radius:55% 45% 62% 38% / 44% 56% 50% 50%; transform:scale(0.97); }
-}
-.illo-ring {
-  position:absolute; width:340px; height:340px;
-  border:2px dashed rgba(15,98,254,.18); border-radius:50%;
-  animation:ringrotate 20s linear infinite; z-index:0; pointer-events:none;
-}
-[data-theme="dark"] .illo-ring { border-color:rgba(69,137,255,.25); }
-@keyframes ringrotate { to { transform:rotate(360deg); } }
-.illo-ring::before {
-  content:''; position:absolute; top:-6px; left:50%;
-  width:10px; height:10px; border-radius:50%;
-  background:var(--accent2); transform:translateX(-50%); box-shadow:0 0 8px var(--accent2);
-}
-.illo-ring::after {
-  content:''; position:absolute; bottom:-6px; left:50%;
-  width:8px; height:8px; border-radius:50%;
-  background:var(--accent3); transform:translateX(-50%); box-shadow:0 0 8px var(--accent3);
-}
-.fbadge {
-  position:absolute; z-index:10;
-  background:var(--fbadge-bg); border:2px solid var(--border);
-  border-radius:14px; padding:7px 13px;
-  font-size:.76rem; font-weight:700;
-  display:flex; align-items:center; gap:.4rem;
-  white-space:nowrap; box-shadow:0 4px 18px var(--shadow-color); color:var(--text);
-  transition:background .4s, border-color .4s, color .4s;
-}
-.fbadge-1 { top:18px;   right:-10px; animation:floatA 3s ease-in-out infinite; }
-.fbadge-2 { bottom:50px; left:-20px;  animation:floatB 3.8s .5s ease-in-out infinite; }
-.fbadge-3 { top:95px;   left:-25px;  animation:floatC 4.2s .9s ease-in-out infinite; }
-.fbadge-4 { bottom:140px; right:-15px; animation:floatA 3.5s 1.2s ease-in-out infinite; }
-@keyframes floatA { 0%,100%{transform:translateY(0) rotate(-1deg)} 50%{transform:translateY(-10px) rotate(1deg)} }
-@keyframes floatB { 0%,100%{transform:translateY(0) rotate(1deg)}  50%{transform:translateY(-8px) rotate(-1deg)} }
-@keyframes floatC { 0%,100%{transform:translateY(0) rotate(0deg)}  50%{transform:translateY(-12px) rotate(2deg)} }
-
-.sparkle {
-  position:absolute; z-index:12; pointer-events:none; font-size:1rem;
-  animation:sparkleFloat var(--dur,3s) var(--delay,0s) ease-in-out infinite;
-}
-@keyframes sparkleFloat {
-  0%,100% { transform:translate(0,0) scale(1); opacity:.7; }
-  50%     { transform:translate(var(--tx,5px), var(--ty,-12px)) scale(1.3); opacity:1; }
-}
-.phone-svg { position:relative; z-index:5; filter:drop-shadow(0 16px 40px rgba(15,98,254,.22)); }
-.float-anim { animation:gentlefloat 4s ease-in-out infinite; }
-@keyframes gentlefloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-
-/* ── SECTIONS — no border-top, use seamless bg alternation ── */
-section { padding:90px 8vw; transition:var(--theme-transition); }
-#skills       { background:var(--bg2); position:relative; }
-#projects     { background:var(--bg); }
-#achievements { background:var(--bg2); position:relative; }
-#education    { background:var(--bg); }
-#contact      { background:var(--bg2); display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:4rem; }
-
-/* dot-texture for bg2 sections */
-#skills::before, #achievements::before {
-  content:''; position:absolute; inset:0; pointer-events:none; z-index:0;
-  background-image:
-    radial-gradient(circle, rgba(15,98,254,.15) 2px, transparent 2px),
-    radial-gradient(circle, rgba(105,41,196,.10) 2px, transparent 2px),
-    radial-gradient(circle, rgba(0,166,81,.10) 2px, transparent 2px),
-    radial-gradient(circle, rgba(250,77,86,.10) 2px, transparent 2px);
-  background-size:60px 60px, 80px 80px, 50px 50px, 70px 70px;
-  background-position:0 0, 30px 30px, 15px 45px, 50px 10px;
-  opacity:.4;
-}
-#skills > *, #achievements > * { position:relative; z-index:1; }
-
-.section-tag {
-  font-size:.8rem; letter-spacing:.15em; text-transform:uppercase;
-  color:var(--accent); font-weight:700; margin-bottom:.7rem;
-  display:flex; align-items:center; gap:.5rem;
-}
-.section-tag::before { content:''; display:block; width:24px; height:2px; background:var(--accent); }
-.section-title { font-family:'Syne',sans-serif; font-weight:800; font-size:clamp(2rem,4vw,3rem); line-height:1.1; margin-bottom:1rem; }
-.section-sub { color:var(--muted); max-width:560px; line-height:1.7; margin-bottom:3rem; }
-
-/* ── SKILLS ── */
-.skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.5rem; }
-.skill-card {
-  background:var(--skill-bg); border:2px solid var(--border); border-radius:20px;
-  padding:1.8rem; position:relative; overflow:hidden;
-  transition:transform .3s, box-shadow .3s, background .4s, border-color .4s;
-  box-shadow:0 4px 18px var(--shadow-color);
-}
-.skill-card:hover { transform:translateY(-5px); box-shadow:0 16px 40px rgba(15,98,254,.16); }
-.skill-card::before {
-  content:''; position:absolute; top:-40px; right:-40px; width:120px; height:120px;
-  border-radius:50%; background:radial-gradient(circle,var(--card-glow,rgba(15,98,254,.1)) 0%,transparent 70%);
-}
-.skill-card:nth-child(2){ --card-glow:rgba(105,41,196,.12); }
-.skill-card:nth-child(3){ --card-glow:rgba(0,166,81,.12); }
-.skill-card:nth-child(4){ --card-glow:rgba(250,77,86,.12); }
-.skill-card:nth-child(5){ --card-glow:rgba(0,114,195,.12); }
-.skill-icon { font-size:2rem; margin-bottom:.8rem; }
-.skill-card h3 { font-family:'Syne',sans-serif; font-size:1rem; font-weight:700; margin-bottom:.8rem; }
-.skill-tags { display:flex; flex-wrap:wrap; gap:.5rem; }
-.tag        { background:rgba(15,98,254,.10); color:var(--accent); border:1.5px solid rgba(15,98,254,.22); border-radius:50px; padding:4px 12px; font-size:.78rem; font-weight:600; }
-.tag.green  { background:rgba(0,166,81,.10); color:var(--tag-green-color); border-color:rgba(0,166,81,.25); }
-.tag.pink   { background:rgba(105,41,196,.10); color:var(--accent2); border-color:rgba(105,41,196,.25); }
-.tag.yellow { background:rgba(250,77,86,.10); color:var(--accent4); border-color:rgba(250,77,86,.25); }
-
-.prof-section { margin-top:3rem; }
-.prof-row { margin-bottom:1.5rem; }
-.prof-label { font-size:.9rem; font-weight:500; margin-bottom:.5rem; display:flex; justify-content:space-between; }
-.prof-bar { height:9px; background:rgba(15,98,254,.08); border-radius:50px; overflow:hidden; }
-.prof-fill { height:100%; border-radius:50px; background:linear-gradient(90deg,var(--accent),var(--accent2)); transform-origin:left; animation:barfill 1.5s ease both; }
-@keyframes barfill { from{transform:scaleX(0)} to{transform:scaleX(1)} }
-
-/* ── PROJECTS ── */
-.projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.8rem; }
-.project-card {
-  background:var(--skill-bg); border:2px solid var(--border); border-radius:24px;
-  padding:2rem; position:relative; overflow:hidden;
-  transition:transform .3s, box-shadow .3s, background .4s, border-color .4s;
-  box-shadow:0 4px 18px var(--shadow-color);
-}
-.project-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(15,98,254,.18); }
-.proj-num { position:absolute; top:1.5rem; right:1.8rem; font-family:'Syne',sans-serif; font-size:3.5rem; font-weight:800; color:rgba(15,98,254,.06); line-height:1; pointer-events:none; user-select:none; }
-.proj-icon  { font-size:2.2rem; margin-bottom:1rem; }
-.proj-title { font-family:'Syne',sans-serif; font-weight:700; font-size:1.2rem; margin-bottom:.6rem; }
-.proj-desc  { color:var(--muted); font-size:.9rem; line-height:1.7; margin-bottom:1.2rem; }
-.proj-bullets { list-style:none; margin-bottom:1.4rem; }
-.proj-bullets li { color:var(--muted); font-size:.85rem; line-height:1.6; padding-left:1.2rem; position:relative; margin-bottom:.3rem; }
-.proj-bullets li::before { content:'→'; position:absolute; left:0; color:var(--accent2); }
-.proj-stack { display:flex; flex-wrap:wrap; gap:.45rem; }
-.proj-stack span { font-size:.75rem; padding:3px 10px; border-radius:50px; background:rgba(0,166,81,.10); color:var(--tag-green-color); border:1.5px solid rgba(0,166,81,.22); font-weight:600; }
-.proj-link { display:inline-flex; align-items:center; gap:.3rem; color:var(--accent); font-size:.83rem; font-weight:500; text-decoration:none; margin-top:.8rem; transition:gap .2s; }
-.proj-link:hover { gap:.55rem; }
-.proj-tab-label { font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:2px 10px; border-radius:50px; margin-bottom:.8rem; display:inline-block; }
-.tab-se       { background:rgba(15,98,254,.12); color:var(--accent); border:1px solid rgba(15,98,254,.25); }
-.tab-android  { background:rgba(0,166,81,.12); color:var(--tag-green-color); border:1px solid rgba(0,166,81,.25); }
-
-/* ── ACHIEVEMENTS ── */
-.achieve-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5rem; }
-.achieve-card {
-  background:var(--skill-bg); border:2px solid var(--border); border-radius:20px;
-  padding:1.8rem; position:relative; overflow:hidden;
-  transition:transform .3s, border-color .3s, background .4s;
-  box-shadow:0 4px 18px var(--shadow-color);
-}
-.achieve-card:hover { transform:translateY(-4px); border-color:var(--accent); }
-.achieve-arrow { position:absolute; top:1.2rem; right:1.2rem; width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-size:.9rem; }
-.achieve-card h3 { font-family:'Syne',sans-serif; font-weight:700; font-size:1rem; margin-bottom:.6rem; }
-.achieve-card p  { color:var(--muted); font-size:.88rem; line-height:1.6; }
-
-.cert-list { margin-top:3rem; display:flex; flex-direction:column; gap:1rem; }
-.cert-item { display:flex; align-items:center; gap:1rem; background:var(--skill-bg); border:2px solid var(--border); border-radius:16px; padding:1.2rem 1.5rem; transition:border-color .2s, background .4s; box-shadow:0 4px 18px var(--shadow-color); }
-.cert-item:hover { border-color:var(--accent); }
-.cert-icon  { font-size:1.8rem; }
-.cert-title { font-weight:600; font-size:.95rem; }
-.cert-issuer{ color:var(--muted); font-size:.82rem; }
-
-/* ── EDUCATION ── */
-.edu-cards { display:flex; flex-direction:column; gap:1.4rem; max-width:720px; margin-top:2rem; }
-.edu-card { background:var(--edu-bg); border:2px solid var(--border); border-radius:24px; padding:2rem 2.5rem; display:flex; align-items:center; gap:2rem; box-shadow:0 4px 18px var(--shadow-color); transition:background .4s, border-color .4s, transform .3s; }
-.edu-card:hover { transform:translateY(-3px); border-color:var(--accent); }
-.edu-logo   { font-size:3rem; }
-.edu-name   { font-family:'Syne',sans-serif; font-weight:700; font-size:1.1rem; }
-.edu-degree { color:var(--accent); font-weight:500; font-size:.9rem; margin:.3rem 0; }
-.edu-dates  { color:var(--muted); font-size:.85rem; }
-
-/* ── CONTACT ── */
-.contact-title { font-family:'Syne',sans-serif; font-size:clamp(1.8rem,3.5vw,2.8rem); font-weight:800; line-height:1.15; margin-bottom:.8rem; }
-.contact-sub   { color:var(--muted); line-height:1.7; font-size:1rem; margin-bottom:2rem; }
-.contact-email {
-  display:inline-flex; align-items:center; gap:.7rem;
-  font-size:1.05rem; font-weight:600; color:var(--text);
-  text-decoration:none; margin-bottom:2rem; transition:color .2s;
-}
-.contact-email:hover { color:var(--accent); }
-.contact-socials { display:flex; gap:1rem; flex-wrap:wrap; }
-
-/* Envelope animation */
-.envelope-illo { display:flex; justify-content:center; position:relative; }
-.envelope-illo svg { overflow:visible; }
-@keyframes envBounce {
-  0%,100% { transform:translateY(0) rotate(0deg); }
-  30%     { transform:translateY(-12px) rotate(-2deg); }
-  60%     { transform:translateY(-6px) rotate(1deg); }
-}
-.env-group { animation:envBounce 4s ease-in-out infinite; transform-origin:center; }
-@keyframes letterPeek { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-18px); } }
-.letter-group { animation:letterPeek 3.5s .5s ease-in-out infinite; }
-
-/* ── FOOTER ── */
-footer { text-align:center; padding:2rem; border-top:2px solid var(--border); color:var(--muted); font-size:.85rem; background:var(--bg); transition:var(--theme-transition); }
-
-/* ── REVEAL ── */
-.reveal { opacity:0; transform:translateY(30px); transition:opacity .7s ease, transform .7s ease; }
-.reveal.visible { opacity:1; transform:none; }
-
-/* ── RESPONSIVE ── */
-@media(max-width:768px){
-  #hero,#contact { grid-template-columns:1fr; }
-  .hero-illo { display:none; }
-  nav .nav-links { display:none; }
-}
+  :root {
+    --green: #3DDC84;
+    --amber: #FFB000;
+    --kotlin: #7F52FF;
+    --java-orange: #E76F00;
+    --bg: #121212;
+    --surface: #1A1A1A;
+    --surface-high: #242424;
+    --border: rgba(59,75,55,0.35);
+    --text: #e5e2e1;
+    --muted: #b9ccb2;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Fira Sans', sans-serif;
+    overflow-x: hidden;
+  }
+  .scanlines {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);
+  }
+  .dot-grid {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image: radial-gradient(rgba(61,220,132,0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .code-float {
+    position: absolute;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(61,220,132,0.035);
+    white-space: pre;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1.6;
+  }
+  .terminal-window {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: #1f1f1f;
+    border-bottom: 1px solid var(--border);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .terminal-header .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot-red   { background: #ff5f57; }
+  .dot-amber { background: #febc2e; }
+  .dot-green { background: #28c840; }
+  .terminal-path { margin-left: 8px; font-size: 10px; opacity: 0.7; }
+  .nav-link {
+    position: relative; padding: 4px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  .nav-link::after {
+    content: ''; position: absolute; bottom: -2px; left: 0;
+    width: 0; height: 2px; background: var(--green);
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover { color: var(--green); }
+  .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+  .nav-link.active { color: var(--green); }
+  .tab-nav-link {
+    padding: 8px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .tab-nav-link:hover { color: var(--text); }
+  .tab-nav-link.active {
+    color: var(--green);
+    border-bottom-color: var(--green);
+    background: rgba(61,220,132,0.05);
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 32px;
+    background: var(--green);
+    color: #002203;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px; font-weight: 700;
+    border-radius: 999px;
+    border: none; cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 0 0 rgba(61,220,132,0);
+  }
+  .btn-primary:hover {
+    background: #4deea0;
+    box-shadow: 0 0 24px rgba(61,220,132,0.4);
+    transform: translateY(-2px);
+  }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 32px;
+    background: transparent;
+    color: var(--green);
+    font-family: 'Space Mono', monospace;
+    font-size: 13px; font-weight: 700;
+    border-radius: 999px;
+    border: 2px solid rgba(61,220,132,0.5);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover {
+    border-color: var(--green);
+    background: rgba(61,220,132,0.08);
+    box-shadow: 0 0 16px rgba(61,220,132,0.2);
+    transform: translateY(-2px);
+  }
+  .skill-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+    width: 0 !important;
+  }
+  .skill-bar-fill.animated { width: var(--target-width) !important; }
+  .hover-lift {
+    transition: transform 0.4s cubic-bezier(0.165,0.84,0.44,1), box-shadow 0.4s ease, border-color 0.3s;
+  }
+  .hover-lift:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(61,220,132,0.15);
+  }
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    display: flex; flex-direction: column; gap: 16px;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(61,220,132,0.25);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.35), 0 0 0 1px rgba(61,220,132,0.1);
+  }
+  .project-card .card-path {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: rgba(185,204,178,0.4);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .project-card h4 {
+    font-family: 'Space Mono', monospace;
+    font-size: 18px; font-weight: 700;
+    color: var(--text);
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .project-card p {
+    font-size: 14px; line-height: 1.65;
+    color: var(--muted);
+    flex-grow: 1;
+  }
+  .tech-chip {
+    display: inline-block;
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--muted);
+  }
+  .execute-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--green);
+    letter-spacing: 1px; text-transform: uppercase;
+    display: flex; align-items: center; gap: 6px;
+    transition: gap 0.2s;
+  }
+  .execute-link:hover { gap: 10px; }
+  .filter-chip {
+    padding: 5px 14px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 500; letter-spacing: 1px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+  }
+  .filter-chip:hover { border-color: var(--green); color: var(--green); }
+  .filter-chip.active {
+    background: var(--green);
+    border-color: var(--green);
+    color: #002203;
+    font-weight: 700;
+  }
+  .contact-icon-btn {
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    padding: 24px 20px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .contact-icon-btn:hover {
+    background: var(--surface-high);
+    border-color: rgba(61,220,132,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulseSoft {
+    0%,100% { box-shadow: 0 0 0 rgba(61,220,132,0); }
+    50%     { box-shadow: 0 0 28px rgba(61,220,132,0.35); }
+  }
+  @keyframes blink {
+    0%,100% { opacity: 1; }
+    50%     { opacity: 0; }
+  }
+  @keyframes ping {
+    75%,100% { transform: scale(2); opacity: 0; }
+  }
+  .animate-reveal {
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+  .delay-500 { animation-delay: 0.5s; }
+  .cursor-blink { animation: blink 1s step-end infinite; }
+  .pulse-dot::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--green); border-radius: 50%;
+    animation: ping 1.4s cubic-bezier(0,0,0.2,1) infinite;
+  }
+  .page { display: none; }
+  .page.active { display: block; }
+  .status-bar {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+  .section-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 28px; font-weight: 700;
+    color: var(--green);
+    display: flex; align-items: center; gap: 16px;
+  }
+  .section-title::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, rgba(59,75,55,0.4), transparent);
+  }
+  .mobile-nav-btn {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 8px 16px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    cursor: pointer; background: none; border: none;
+  }
+  .mobile-nav-btn.active { color: var(--green); }
+  .mobile-nav-btn .material-symbols-outlined { font-size: 22px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .animate-reveal { opacity: 1 !important; }
+  }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: #3b4b37; border-radius: 4px; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="logo">&lt; Falak Khan /&gt;</div>
-  <div class="nav-right">
-    <ul class="nav-links">
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#achievements">Achievements</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-      <span class="icon">☀️</span>
-      <span class="label">Light</span>
+<div class="scanlines"></div>
+<div class="dot-grid"></div>
+
+<div class="code-float" style="top:120px;left:30px;display:none" id="code-left">fun main() {
+  val dev = Falak()
+  dev.buildAndroid()
+  dev.shipCode()
+}</div>
+<div class="code-float" style="bottom:160px;right:30px;display:none" id="code-right">@Composable
+fun Portfolio() {
+  Column {
+    Hero()
+    Projects()
+    Skills()
+  }
+}</div>
+
+<!-- HOME HEADER -->
+<header id="home-header" class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 md:px-10 h-20 bg-black/80 backdrop-blur-lg border-b border-[#3b4b37]/20">
+  <a class="font-headline text-xl text-[#3DDC84] tracking-tight cursor-pointer" onclick="navigate('home')">
+    Falak Khan<span class="cursor-blink">_</span>
+  </a>
+  <nav class="hidden md:flex gap-10 items-center">
+    <button onclick="navigate('home')"     class="nav-link active" id="nav-home">HOME</button>
+    <button onclick="navigate('projects')" class="nav-link" id="nav-projects">PROJECTS</button>
+    <button onclick="navigate('skills')"   class="nav-link" id="nav-skills">SKILLS</button>
+    <button onclick="navigate('contact')"  class="nav-link" id="nav-contact">CONTACT</button>
+  </nav>
+  <button onclick="navigate('contact')" class="hidden md:block px-5 py-2 border border-[#3DDC84] text-[#3DDC84] text-xs font-bold font-mono hover:bg-[#3DDC84]/10 transition-all duration-300 rounded-full tracking-widest">
+    GET IN TOUCH
+  </button>
+</header>
+
+<!-- PROJECTS TERMINAL HEADER -->
+<header id="projects-header" class="fixed top-0 left-0 w-full z-50 hidden" style="height:52px; background:#1a1a1a; border-bottom:1px solid #3b4b37;">
+  <div class="flex items-center justify-between h-full px-4">
+    <div class="flex items-center gap-3">
+      <div class="flex gap-1.5">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-amber"></div>
+        <div class="dot dot-green"></div>
+      </div>
+      <span class="font-mono text-[11px] text-[#b9ccb2]/60 ml-2 flex items-center gap-1">
+        <span class="material-symbols-outlined" style="font-size:13px;">terminal</span>
+        falak_khan / projects
+      </span>
+    </div>
+    <div class="hidden md:flex items-center h-full">
+      <button onclick="navigate('home')"     class="tab-nav-link h-full">Home.java</button>
+      <button onclick="navigate('projects')" class="tab-nav-link active h-full" id="tab-projects">Projects.kt</button>
+      <button onclick="navigate('skills')"   class="tab-nav-link h-full">Stack.xml</button>
+    </div>
+    <button onclick="navigate('contact')" class="px-4 py-1.5 border border-[#3DDC84] text-[#3DDC84] text-[11px] font-bold font-mono hover:bg-[#3DDC84]/10 transition-all rounded tracking-wider">
+      RUN BUILD
     </button>
   </div>
+</header>
+
+<!-- PAGE: HOME -->
+<div id="page-home" class="page active relative z-10">
+  <main class="w-full pt-36 pb-24 px-4 md:px-10 max-w-6xl mx-auto flex flex-col gap-28">
+    <section class="flex flex-col items-start gap-6 min-h-[55vh] justify-center" id="hero">
+      <div class="space-y-5">
+        <p class="text-[#3DDC84] font-mono text-sm animate-reveal">Hello, I am</p>
+        <h1 class="font-headline text-5xl md:text-7xl text-[#ebffe2] tracking-tight leading-tight animate-reveal delay-100">Falak Khan</h1>
+        <h2 class="text-[#b9ccb2] font-mono text-base md:text-xl max-w-2xl leading-relaxed animate-reveal delay-200">
+          An <span class="text-[#3DDC84]">Android Developer</span> &amp; SDE Aspirant focused on<br class="hidden md:block"/>
+          building high-performance mobile experiences and robust backend systems.
+        </h2>
+      </div>
+      <div class="flex flex-wrap gap-4 mt-4 animate-reveal delay-300">
+        <button onclick="navigate('projects')" class="btn-primary" style="animation: pulseSoft 2.5s infinite ease-in-out;">View My Work</button>
+      </div>
+    </section>
+
+    <section id="skills-preview" class="w-full space-y-10">
+      <h3 class="section-title animate-reveal" data-sr>Skills</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="terminal-window hover-lift animate-reveal delay-100" data-sr>
+          <div class="terminal-header">
+            <div class="dot dot-red"></div><div class="dot dot-amber"></div><div class="dot dot-green"></div>
+            <span class="terminal-path">~/android/mobile-dev.kt</span>
+          </div>
+          <div class="p-8 space-y-6">
+            <h5 class="text-[#ebffe2] font-bold flex items-center gap-2 text-base">
+              <span class="material-symbols-outlined text-[#3DDC84]" style="font-size:20px;">smartphone</span>Mobile Development
+            </h5>
+            <ul class="space-y-5">
+              <li class="space-y-2">
+                <div class="flex justify-between text-sm text-[#b9ccb2] font-mono"><span>Jetpack Compose</span><span>90%</span></div>
+                <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#3DDC84] rounded-full" style="--target-width:90%"></div></div>
+              </li>
+              <li class="space-y-2">
+                <div class="flex justify-between text-sm font-mono"><span class="text-[#7F52FF]">Kotlin / Coroutines</span><span class="text-[#b9ccb2]">85%</span></div>
+                <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#7F52FF] rounded-full" style="--target-width:85%"></div></div>
+              </li>
+              <li class="space-y-2">
+                <div class="flex justify-between text-sm text-[#b9ccb2] font-mono"><span>Room / SQLite</span><span>80%</span></div>
+                <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#3DDC84] rounded-full" style="--target-width:80%"></div></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="terminal-window hover-lift animate-reveal delay-200" data-sr>
+          <div class="terminal-header">
+            <div class="dot dot-red"></div><div class="dot dot-amber"></div><div class="dot dot-green"></div>
+            <span class="terminal-path">~/java/backend-systems.java</span>
+          </div>
+          <div class="p-8 space-y-6">
+            <h5 class="text-[#ebffe2] font-bold flex items-center gap-2 text-base">
+              <span class="material-symbols-outlined text-[#E76F00]" style="font-size:20px;">dns</span>Backend &amp; Systems
+            </h5>
+            <ul class="space-y-5">
+              <li class="space-y-2">
+                <div class="flex justify-between text-sm font-mono"><span class="text-[#E76F00]">Java (17/21)</span><span class="text-[#b9ccb2]">85%</span></div>
+                <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#E76F00] rounded-full" style="--target-width:85%"></div></div>
+              </li>
+              <li class="space-y-2">
+                <div class="flex justify-between text-sm text-[#b9ccb2] font-mono"><span>Spring Boot</span><span>75%</span></div>
+                <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#E76F00] rounded-full" style="--target-width:75%"></div></div>
+              </li>
+              <li class="space-y-2">
+                <div class="flex justify-between text-sm text-[#b9ccb2] font-mono"><span>Docker / K8s</span><span>60%</span></div>
+                <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#E76F00] rounded-full" style="--target-width:60%"></div></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-center pt-2 animate-reveal delay-300" data-sr>
+        <button onclick="navigate('skills')" class="btn-outline text-sm">
+          <span class="material-symbols-outlined" style="font-size:16px;">open_in_full</span>View Full Stack
+        </button>
+      </div>
+    </section>
+
+    <section id="contact-preview" class="w-full space-y-10">
+      <h3 class="section-title animate-reveal" data-sr>Contact</h3>
+      <div class="terminal-window animate-reveal delay-100" data-sr>
+        <div class="terminal-header">
+          <div class="dot dot-red"></div><div class="dot dot-amber"></div><div class="dot dot-green"></div>
+          <span class="terminal-path">~/contact/reach-out.sh</span>
+        </div>
+        <div class="p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-10">
+          <div class="space-y-4">
+            <p class="font-headline text-2xl text-[#ebffe2]">Ready to collaborate?</p>
+            <p class="text-[#b9ccb2] text-base">Currently available for new opportunities and interesting projects.</p>
+            <div class="pt-2 flex items-center gap-3 text-[#3DDC84] font-mono text-sm">
+              <span class="relative flex h-2.5 w-2.5">
+                <span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-[#3DDC84] opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#3DDC84]"></span>
+              </span>
+              <span id="typing-text"></span><span class="cursor-blink inline-block w-2 h-4 bg-[#3DDC84] ml-0.5"></span>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-4 w-full md:w-auto">
+            <a href="https://github.com/curiousfalak" target="_blank" rel="noopener" class="contact-icon-btn">
+              <span class="material-symbols-outlined text-[#3DDC84]" style="font-size:26px;">terminal</span>
+              <span class="text-[10px] font-bold tracking-widest font-mono text-[#b9ccb2]">GITHUB</span>
+            </a>
+            <a href="https://www.linkedin.com/in/falak-khan-636188296/" target="_blank" rel="noopener" class="contact-icon-btn">
+              <span class="material-symbols-outlined text-[#7F52FF]" style="font-size:26px;">share</span>
+              <span class="text-[10px] font-bold tracking-widest font-mono text-[#b9ccb2]">LINKEDIN</span>
+            </a>
+            <a href="mailto:falakkhandec03@gmail.com" class="contact-icon-btn">
+              <span class="material-symbols-outlined text-[#E76F00]" style="font-size:26px;">mail</span>
+              <span class="text-[10px] font-bold tracking-widest font-mono text-[#b9ccb2]">EMAIL</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="relative z-10 w-full flex flex-col md:flex-row justify-between items-center px-4 md:px-10 py-8 border-t border-[#3b4b37]/20 status-bar text-[#b9ccb2]/40">
+    <div class="flex items-center gap-6 mb-3 md:mb-0">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 bg-[#3DDC84] rounded-full"></span>
+        <span class="uppercase tracking-widest text-[10px]">Active Status</span>
+      </div>
+      <span>GHAZIABAD, IN</span>
+    </div>
+    <div>© 2024 FALAK KHAN. BUILT FOR THE ANDROID ECOSYSTEM.</div>
+  </footer>
+</div>
+
+
+<!-- PAGE: PROJECTS -->
+<div id="page-projects" class="page relative z-10">
+  <main class="w-full pt-20 pb-24 px-4 md:px-10 max-w-6xl mx-auto">
+    <div class="pt-10 pb-8 space-y-3 border-b border-[#3b4b37]/30 mb-8">
+      <h2 class="font-headline text-3xl md:text-4xl text-[#ebffe2] animate-reveal">Project Modules</h2>
+      <p class="font-mono text-sm text-[#b9ccb2]/60 italic animate-reveal delay-100">// Technical log of active development cycles and architectural implementations.</p>
+    </div>
+    <div class="flex items-center gap-3 flex-wrap mb-8 animate-reveal delay-200">
+      <span class="font-mono text-[11px] text-[#b9ccb2]/50 tracking-widest uppercase">Filter:</span>
+      <button class="filter-chip active" data-filter="all">ALL_MODS</button>
+      <button class="filter-chip" data-filter="android">ANDROID</button>
+      <button class="filter-chip" data-filter="java">JAVA_CORE</button>
+      <button class="filter-chip" data-filter="ai">AI_ML</button>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="projects-grid">
+
+      <!-- StayFinder — NEW -->
+      <div class="project-card animate-reveal delay-100" data-tags="java">
+        <div class="card-path">
+          <span class="material-symbols-outlined" style="font-size:12px;">folder</span>
+          SRC/MAIN/JAVA/STAY_FINDER
+        </div>
+        <div>
+          <h4>
+            StayFinder
+            <span class="material-symbols-outlined text-[#3DDC84]" style="font-size:18px;">home</span>
+          </h4>
+        </div>
+        <p>Airbnb-like property rental backend with JWT auth, concurrent booking prevention via Redis distributed locks, full-text Elasticsearch search, MinIO image storage, and Kibana analytics.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tech-chip text-[#E76F00]" style="border-color:rgba(231,111,0,0.3)">Java 21</span>
+          <span class="tech-chip text-[#3DDC84]" style="border-color:rgba(61,220,132,0.3)">Spring Boot</span>
+          <span class="tech-chip">PostgreSQL</span>
+          <span class="tech-chip">Redis</span>
+          <span class="tech-chip">Elasticsearch</span>
+          <span class="tech-chip">Docker</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="https://github.com/curiousfalak/stayfinder" target="_blank" rel="noopener" class="execute-link">
+            EXECUTE_VIEW <span class="material-symbols-outlined" style="font-size:14px;">arrow_forward</span>
+          </a>
+          <a href="https://youtu.be/9BVvrpo5z2k" target="_blank" rel="noopener" class="execute-link" style="color:#E76F00;">
+            <span class="material-symbols-outlined" style="font-size:14px;">play_circle</span> DEMO
+          </a>
+        </div>
+      </div>
+
+      <!-- HospitalOPD -->
+      <div class="project-card animate-reveal delay-200" data-tags="java">
+        <div class="card-path">
+          <span class="material-symbols-outlined" style="font-size:12px;">folder</span>
+          SRC/MAIN/JAVA/PRIORITY_QUEUE
+        </div>
+        <div>
+          <h4>
+            HospitalOpdQueueSys
+            <span class="material-symbols-outlined text-[#3DDC84]" style="font-size:18px;">settings</span>
+          </h4>
+        </div>
+        <p>Hospital OPD system using a priority queue to schedule patients by severity (1–5) and arrival time. Includes 39+ JUnit 5 unit tests covering all edge cases.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tech-chip text-[#E76F00]" style="border-color:rgba(231,111,0,0.3)">Java</span>
+          <span class="tech-chip">JUnit 5</span>
+          <span class="tech-chip">Data Structures</span>
+        </div>
+        <a href="https://github.com/curiousfalak/HospitalOpdQueueSys" target="_blank" rel="noopener" class="execute-link">
+          EXECUTE_VIEW <span class="material-symbols-outlined" style="font-size:14px;">arrow_forward</span>
+        </a>
+      </div>
+
+      <!-- PlayBox2 -->
+      <div class="project-card animate-reveal delay-300" data-tags="android">
+        <div class="card-path">
+          <span class="material-symbols-outlined" style="font-size:12px;">folder</span>
+          SRC/MAIN/KOTLIN/VOD_ENGINE
+        </div>
+        <div>
+          <h4>
+            PlayBox2 — VOD App
+            <span class="material-symbols-outlined text-[#3DDC84]" style="font-size:18px;">sync</span>
+          </h4>
+        </div>
+        <p>Full-stack video-on-demand Android app with MVVM architecture, category browsing, and smooth ExoPlayer playback with offline caching via Room.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tech-chip text-[#7F52FF]" style="border-color:rgba(127,82,255,0.3)">Kotlin</span>
+          <span class="tech-chip">Jetpack Compose</span>
+          <span class="tech-chip">ExoPlayer</span>
+          <span class="tech-chip">Node.js</span>
+        </div>
+        <a href="https://github.com/curiousfalak/PlayBox2" target="_blank" rel="noopener" class="execute-link">
+          EXECUTE_VIEW <span class="material-symbols-outlined" style="font-size:14px;">arrow_forward</span>
+        </a>
+      </div>
+
+      <!-- Aarogya -->
+      <div class="project-card animate-reveal delay-100" data-tags="android ai">
+        <div class="card-path">
+          <span class="material-symbols-outlined" style="font-size:12px;">folder</span>
+          SRC/MAIN/KOTLIN/AI_FITNESS
+        </div>
+        <div>
+          <h4>
+            Aarogya — AI Fitness
+            <span class="material-symbols-outlined text-[#7F52FF]" style="font-size:18px;">open_in_new</span>
+          </h4>
+        </div>
+        <p>AI-based fitness app with real-time pose detection via MediaPipe providing instant exercise feedback and Wear OS step tracking integration.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tech-chip text-[#7F52FF]" style="border-color:rgba(127,82,255,0.3)">Kotlin</span>
+          <span class="tech-chip">MediaPipe</span>
+          <span class="tech-chip">Wear OS</span>
+          <span class="tech-chip">TFLite</span>
+        </div>
+        <a href="https://github.com/curiousfalak/aarogya" target="_blank" rel="noopener" class="execute-link">
+          EXECUTE_VIEW <span class="material-symbols-outlined" style="font-size:14px;">arrow_forward</span>
+        </a>
+      </div>
+
+      <!-- Nature Lens -->
+      <div class="project-card animate-reveal delay-200" data-tags="android ai">
+        <div class="card-path">
+          <span class="material-symbols-outlined" style="font-size:12px;">folder</span>
+          SRC/MAIN/KOTLIN/NATURE_LENS
+        </div>
+        <div>
+          <h4>
+            Nature Lens App
+            <span class="material-symbols-outlined text-[#3DDC84]" style="font-size:18px;">visibility</span>
+          </h4>
+        </div>
+        <p>AI-powered Android app for on-device marine species detection using TensorFlow Lite for offline inference and CameraX with GPS tagging.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tech-chip">Compose</span>
+          <span class="tech-chip">TensorFlow Lite</span>
+          <span class="tech-chip">CameraX</span>
+        </div>
+        <a href="https://github.com/curiousfalak/bitbox_bytecrafters" target="_blank" rel="noopener" class="execute-link">
+          EXECUTE_VIEW <span class="material-symbols-outlined" style="font-size:14px;">arrow_forward</span>
+        </a>
+      </div>
+
+      <!-- VendMac -->
+      <div class="project-card animate-reveal delay-300" data-tags="java">
+        <div class="card-path">
+          <span class="material-symbols-outlined" style="font-size:12px;">folder</span>
+          SRC/MAIN/JAVA/VENDING_SIM
+        </div>
+        <div>
+          <h4>
+            VendMac Simulator
+            <span class="material-symbols-outlined text-[#3DDC84]" style="font-size:18px;">tv</span>
+          </h4>
+        </div>
+        <p>Vending machine simulation using the State Design Pattern for transaction handling and multithreading for session timeout management.</p>
+        <div class="flex flex-wrap gap-2">
+          <span class="tech-chip text-[#E76F00]" style="border-color:rgba(231,111,0,0.3)">Java</span>
+          <span class="tech-chip">JavaFX</span>
+          <span class="tech-chip">State Pattern</span>
+          <span class="tech-chip">Concurrency</span>
+        </div>
+        <a href="https://github.com/curiousfalak/VendMac" target="_blank" rel="noopener" class="execute-link">
+          EXECUTE_VIEW <span class="material-symbols-outlined" style="font-size:14px;">arrow_forward</span>
+        </a>
+      </div>
+
+      <!-- Push New Module placeholder -->
+      <div class="project-card flex flex-col items-center justify-center text-center border-dashed animate-reveal delay-100" style="border-style:dashed; border-color:rgba(59,75,55,0.4); min-height:260px;">
+        <div class="flex items-center gap-2 text-[#b9ccb2]/40 font-mono text-xl mb-4">
+          <span>+</span>
+          <span style="width:24px; height:2px; background:currentColor; display:inline-block"></span>
+          <span class="material-symbols-outlined" style="font-size:20px;">code</span>
+        </div>
+        <p class="font-mono text-sm text-[#b9ccb2]/50 tracking-widest uppercase mb-6">PUSH_NEW_MODULE</p>
+        <p class="text-[10px] font-mono text-[#b9ccb2]/30 mb-6">Remote repository sync active.</p>
+        <a href="https://github.com/curiousfalak" target="_blank" rel="noopener"
+           class="px-5 py-2 border border-[#3b4b37] text-[#b9ccb2]/60 font-mono text-[11px] rounded tracking-widest hover:border-[#3DDC84] hover:text-[#3DDC84] transition-all">
+          GITHUB_CONNECT
+        </a>
+      </div>
+
+    </div>
+  </main>
+  <footer class="relative z-10 w-full flex justify-between items-center px-4 md:px-10 py-4 border-t border-[#3b4b37]/20 status-bar text-[#b9ccb2]/30">
+    <div class="flex items-center gap-5">
+      <span class="flex items-center gap-1.5"><span class="material-symbols-outlined" style="font-size:12px;">merge_type</span>master</span>
+      <span class="flex items-center gap-1.5"><span class="material-symbols-outlined" style="font-size:12px;">sync</span>synced</span>
+      <span>UTF-8</span>
+      <span>© 2024 FALAK_KHAN</span>
+    </div>
+    <div class="hidden md:flex gap-5">
+      <a href="https://twitter.com" target="_blank" class="hover:text-[#3DDC84] transition-colors">TWITTER</a>
+      <a href="https://www.linkedin.com/in/falak-khan-636188296/" target="_blank" class="hover:text-[#3DDC84] transition-colors">LINKEDIN</a>
+      <a href="https://github.com/curiousfalak" target="_blank" class="hover:text-[#3DDC84] transition-colors">GITHUB</a>
+    </div>
+  </footer>
+</div>
+
+
+<!-- PAGE: SKILLS -->
+<div id="page-skills" class="page relative z-10">
+  <main class="w-full pt-32 pb-24 px-4 md:px-10 max-w-6xl mx-auto space-y-16">
+    <div>
+      <h2 class="section-title animate-reveal">Full Stack</h2>
+      <p class="font-mono text-sm text-[#b9ccb2]/50 mt-3 animate-reveal delay-100">// Complete technology proficiency matrix</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="terminal-window hover-lift animate-reveal delay-100" data-sr>
+        <div class="terminal-header">
+          <div class="dot dot-red"></div><div class="dot dot-amber"></div><div class="dot dot-green"></div>
+          <span class="terminal-path">~/android/mobile-dev.kt</span>
+        </div>
+        <div class="p-8 space-y-6">
+          <h5 class="text-[#ebffe2] font-bold flex items-center gap-2 text-base">
+            <span class="material-symbols-outlined text-[#3DDC84]" style="font-size:20px;">smartphone</span>Mobile Development
+          </h5>
+          <ul class="space-y-5">
+            <li class="space-y-2">
+              <div class="flex justify-between text-sm text-[#b9ccb2] font-mono"><span>Jetpack Compose</span><span>90%</span></div>
+              <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#3DDC84] rounded-full" style="--target-width:90%"></div></div>
+            </li>
+            <li class="space-y-2">
+              <div class="flex justify-between text-sm font-mono"><span class="text-[#7F52FF]">Kotlin / Coroutines</span><span class="text-[#b9ccb2]">85%</span></div>
+              <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#7F52FF] rounded-full" style="--target-width:85%"></div></div>
+            </li>
+            <li class="space-y-2">
+              <div class="flex justify-between text-sm text-[#b9ccb2] font-mono"><span>Room / SQLite</span><span>80%</span></div>
+              <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#3DDC84] rounded-full" style="--target-width:80%"></div></div>
+            </li>
+            <li class="space-y-2">
+              <div class="flex justify-between text-sm text-[#b9ccb2] font-mono"><span>CameraX / MediaPipe</span><span>75%</span></div>
+              <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#3DDC84] rounded-full" style="--target-width:75%"></div></div>
+            </li>
+            <li class="space-y-2">
+              <div class="flex justify-between text-sm text-[#b9ccb2] font-mono"><span>ExoPlayer / Media3</span><span>78%</span></div>
+              <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#3DDC84] rounded-full" style="--target-width:78%"></div></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="terminal-window hover-lift animate-reveal delay-200" data-sr>
+        <div class="terminal-header">
+          <div class="dot dot-red"></div><div class="dot dot-amber"></div><div class="dot dot-green"></div>
+          <span class="terminal-path">~/java/backend-systems.java</span>
+        </div>
+        <div class="p-8 space-y-6">
+          <h5 class="text-[#ebffe2] font-bold flex items-center gap-2 text-base">
+            <span class="material-symbols-outlined text-[#E76F00]" style="font-size:20px;">dns</span>Backend &amp; Systems
+          </h5>
+          <ul class="space-y-5">
+            <li class="space-y-2">
+              <div class="flex justify-between text-sm font-mono"><span class="text-[#E76F00]">Java (17/21)</span><span class="text-[#b9ccb2]">85%</span></div>
+              <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#E76F00] rounded-full" style="--target-width:85%"></div></div>
+            </li>
+            <li class="space-y-2">
+              <div class="flex justify-between text-sm text-[#b9ccb2] font-mono"><span>Spring Boot</span><span>75%</span></div>
+              <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#E76F00] rounded-full" style="--target-width:75%"></div></div>
+            </li>
+            <li class="space-y-2">
+              <div class="flex justify-between text-sm text-[#b9ccb2] font-mono"><span>Docker / K8s</span><span>60%</span></div>
+              <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#E76F00] rounded-full" style="--target-width:60%"></div></div>
+            </li>
+            <li class="space-y-2">
+              <div class="flex justify-between text-sm text-[#b9ccb2] font-mono"><span>Node.js / Express</span><span>65%</span></div>
+              <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#E76F00] rounded-full" style="--target-width:65%"></div></div>
+            </li>
+            <li class="space-y-2">
+              <div class="flex justify-between text-sm text-[#b9ccb2] font-mono"><span>REST APIs / GraphQL</span><span>70%</span></div>
+              <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#E76F00] rounded-full" style="--target-width:70%"></div></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="terminal-window hover-lift animate-reveal delay-300" data-sr>
+        <div class="terminal-header">
+          <div class="dot dot-red"></div><div class="dot dot-amber"></div><div class="dot dot-green"></div>
+          <span class="terminal-path">~/ai/ml-stack.py</span>
+        </div>
+        <div class="p-8 space-y-6">
+          <h5 class="text-[#ebffe2] font-bold flex items-center gap-2 text-base">
+            <span class="material-symbols-outlined text-[#7F52FF]" style="font-size:20px;">psychology</span>AI / ML
+          </h5>
+          <ul class="space-y-5">
+            <li class="space-y-2">
+              <div class="flex justify-between text-sm text-[#b9ccb2] font-mono"><span>TensorFlow Lite</span><span>72%</span></div>
+              <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#7F52FF] rounded-full" style="--target-width:72%"></div></div>
+            </li>
+            <li class="space-y-2">
+              <div class="flex justify-between text-sm text-[#b9ccb2] font-mono"><span>MediaPipe Pose</span><span>70%</span></div>
+              <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#7F52FF] rounded-full" style="--target-width:70%"></div></div>
+            </li>
+            <li class="space-y-2">
+              <div class="flex justify-between text-sm text-[#b9ccb2] font-mono"><span>On-Device Inference</span><span>75%</span></div>
+              <div class="h-1.5 w-full bg-[#121212] rounded-full overflow-hidden"><div class="skill-bar-fill bg-[#7F52FF] rounded-full" style="--target-width:75%"></div></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="terminal-window hover-lift animate-reveal delay-400" data-sr>
+        <div class="terminal-header">
+          <div class="dot dot-red"></div><div class="dot dot-amber"></div><div class="dot dot-green"></div>
+          <span class="terminal-path">~/tools/devtools.sh</span>
+        </div>
+        <div class="p-8 space-y-6">
+          <h5 class="text-[#ebffe2] font-bold flex items-center gap-2 text-base">
+            <span class="material-symbols-outlined text-[#3DDC84]" style="font-size:20px;">build</span>Dev Tools
+          </h5>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-chip text-[#3DDC84]" style="border-color:rgba(61,220,132,0.3)">Android Studio</span>
+            <span class="tech-chip">Git / GitHub</span>
+            <span class="tech-chip text-[#E76F00]" style="border-color:rgba(231,111,0,0.3)">Gradle</span>
+            <span class="tech-chip">IntelliJ IDEA</span>
+            <span class="tech-chip text-[#7F52FF]" style="border-color:rgba(127,82,255,0.3)">Hilt / Dagger2</span>
+            <span class="tech-chip">Retrofit</span>
+            <span class="tech-chip text-[#3DDC84]" style="border-color:rgba(61,220,132,0.3)">Wear OS</span>
+            <span class="tech-chip">Firebase</span>
+            <span class="tech-chip">JUnit 5</span>
+            <span class="tech-chip text-[#E76F00]" style="border-color:rgba(231,111,0,0.3)">Maven</span>
+            <span class="tech-chip">Postman</span>
+            <span class="tech-chip">Linux / CLI</span>
+            <span class="tech-chip">MinIO</span>
+            <span class="tech-chip">Kibana</span>
+            <span class="tech-chip">Swagger</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="relative z-10 w-full flex justify-between items-center px-4 md:px-10 py-8 border-t border-[#3b4b37]/20 status-bar text-[#b9ccb2]/40">
+    <div class="flex items-center gap-6 mb-3 md:mb-0">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 bg-[#3DDC84] rounded-full"></span>
+        <span class="uppercase tracking-widest text-[10px]">Active Status</span>
+      </div>
+      <span>GHAZIABAD, IN</span>
+    </div>
+    <div>© 2024 FALAK KHAN. BUILT FOR THE ANDROID ECOSYSTEM.</div>
+  </footer>
+</div>
+
+
+<!-- PAGE: CONTACT -->
+<div id="page-contact" class="page relative z-10">
+  <main class="w-full pt-32 pb-24 px-4 md:px-10 max-w-4xl mx-auto space-y-12">
+    <div>
+      <h2 class="section-title animate-reveal">Contact</h2>
+      <p class="font-mono text-sm text-[#b9ccb2]/50 mt-3 animate-reveal delay-100">// Let's connect and build something great.</p>
+    </div>
+    <div class="terminal-window animate-reveal delay-200" data-sr>
+      <div class="terminal-header">
+        <div class="dot dot-red"></div><div class="dot dot-amber"></div><div class="dot dot-green"></div>
+        <span class="terminal-path">~/contact/send-message.sh</span>
+      </div>
+      <div class="p-8 space-y-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <a href="https://github.com/curiousfalak" target="_blank" rel="noopener" class="contact-icon-btn group">
+            <span class="material-symbols-outlined text-[#3DDC84] group-hover:scale-110 transition-transform" style="font-size:32px;">terminal</span>
+            <span class="font-headline text-sm text-[#ebffe2]">GitHub</span>
+            <span class="font-mono text-[10px] text-[#b9ccb2]/50">@curiousfalak</span>
+          </a>
+          <a href="https://www.linkedin.com/in/falak-khan-636188296/" target="_blank" rel="noopener" class="contact-icon-btn group">
+            <span class="material-symbols-outlined text-[#7F52FF] group-hover:scale-110 transition-transform" style="font-size:32px;">share</span>
+            <span class="font-headline text-sm text-[#ebffe2]">LinkedIn</span>
+            <span class="font-mono text-[10px] text-[#b9ccb2]/50">falak-khan</span>
+          </a>
+          <a href="mailto:falakkhandec03@gmail.com" class="contact-icon-btn group">
+            <span class="material-symbols-outlined text-[#E76F00] group-hover:scale-110 transition-transform" style="font-size:32px;">mail</span>
+            <span class="font-headline text-sm text-[#ebffe2]">Email</span>
+            <span class="font-mono text-[10px] text-[#b9ccb2]/50">falakkhandec03@gmail.com</span>
+          </a>
+        </div>
+        <div class="border-t border-[#3b4b37]/30 pt-8 space-y-4">
+          <p class="font-headline text-2xl text-[#ebffe2]">Ready to collaborate?</p>
+          <p class="text-[#b9ccb2] font-mono text-sm leading-relaxed">
+            I'm currently open to Android development roles, backend engineering positions, and interesting open-source collaborations.
+            Whether you have a full-time opportunity, freelance project, or just want to talk tech — reach out!
+          </p>
+          <div class="flex items-center gap-3 text-[#3DDC84] font-mono text-sm pt-2">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="pulse-dot absolute inline-flex h-full w-full rounded-full bg-[#3DDC84] opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#3DDC84]"></span>
+            </span>
+            Available for new opportunities
+          </div>
+          <div class="pt-4">
+            <a href="mailto:falakkhandec03@gmail.com" class="btn-primary text-sm">
+              <span class="material-symbols-outlined" style="font-size:18px;">send</span>Send Message
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="relative z-10 w-full flex justify-between items-center px-4 md:px-10 py-8 border-t border-[#3b4b37]/20 status-bar text-[#b9ccb2]/40">
+    <div class="flex items-center gap-2">
+      <span class="w-2 h-2 bg-[#3DDC84] rounded-full"></span>
+      <span class="uppercase tracking-widest text-[10px]">Active Status</span>
+    </div>
+    <div>© 2024 FALAK KHAN</div>
+  </footer>
+</div>
+
+
+<!-- MOBILE NAV -->
+<nav class="fixed bottom-5 left-1/2 -translate-x-1/2 w-[92%] max-w-sm z-50 flex justify-around items-center h-16 md:hidden bg-[#1f1f1f]/95 backdrop-blur-xl border border-[#3b4b37]/20 rounded-full px-2 shadow-2xl">
+  <button class="mobile-nav-btn active" id="mob-home" onclick="navigate('home')">
+    <span class="material-symbols-outlined">home</span><span>Home</span>
+  </button>
+  <button class="mobile-nav-btn" id="mob-projects" onclick="navigate('projects')">
+    <span class="material-symbols-outlined">folder</span><span>Projects</span>
+  </button>
+  <button class="mobile-nav-btn" id="mob-skills" onclick="navigate('skills')">
+    <span class="material-symbols-outlined">psychology</span><span>Skills</span>
+  </button>
+  <button class="mobile-nav-btn" id="mob-contact" onclick="navigate('contact')">
+    <span class="material-symbols-outlined">alternate_email</span><span>Contact</span>
+  </button>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-text">
-    <div class="greeting">Hey there 👋</div>
-    <h1 class="hero-name">Hi, I'm <span>Falak Khan</span></h1>
-    <div class="hero-title-dual">
-      <span class="role role-android">📱 Android Developer</span>
-      <span class="role-sep">×</span>
-      <span class="role role-sde">💻 SDE Aspirant</span>
-      <span class="role-sep">·</span>
-      <span class="role" style="background:rgba(250,77,86,.10);color:var(--accent4);border:1.5px solid rgba(250,77,86,.3);padding:5px 14px;border-radius:50px;font-size:.9rem;font-weight:700;">🎓 CS Student</span>
-    </div>
-    <p class="hero-desc">
-      A passionate Android developer &amp; Software Engineering aspirant from KIET Group of Institutions, Ghaziabad.
-      I craft offline-first apps with Jetpack Compose &amp; Kotlin, design clean OOP systems in Java, and love tackling DSA &amp; system design challenges.
-      Clean architecture, tested code, real-world impact — that's my jam!
-    </p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn btn-primary">📬 Contact Me</a>
-      <a href="#projects" class="btn btn-outline">🚀 See My Work</a>
-    </div>
-
-    <div class="social-row">
-      <a href="tel:+919335228916" class="social-pill">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="12" fill="#25D366"/><path d="M16.75 14.33c-.32-.16-1.88-.93-2.17-1.03-.29-.1-.5-.16-.71.16-.21.32-.81 1.03-.99 1.24-.18.21-.36.24-.68.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.1-.21.05-.4-.03-.55-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.53-.71-.54-.18-.01-.4-.01-.61-.01-.21 0-.55.08-.84.4-.29.32-1.1 1.07-1.1 2.62 0 1.54 1.12 3.03 1.28 3.24.16.21 2.21 3.38 5.36 4.74.75.32 1.33.51 1.79.66.75.24 1.44.2 1.98.12.6-.09 1.88-.77 2.14-1.51.26-.74.26-1.38.18-1.51-.08-.13-.29-.21-.61-.37z" fill="white"/></svg>
-        +91 93352 28916
-      </a>
-      <a href="https://github.com" target="_blank" class="social-pill">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-        GitHub
-      </a>
-      <a href="https://linkedin.com" target="_blank" class="social-pill">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0A66C2"/><path d="M7.2 9.6H4.8V19.2H7.2V9.6Z" fill="white"/><circle cx="6" cy="6.6" r="1.4" fill="white"/><path d="M19.2 13.2c0-2.2-1.1-3.6-3.1-3.6-1 0-1.9.5-2.3 1.3V9.6H11.4v9.6h2.4v-5.1c0-1.1.6-1.8 1.6-1.8.9 0 1.4.6 1.4 1.8v5.1H19.2V13.2z" fill="white"/></svg>
-        LinkedIn
-      </a>
-      <a href="https://leetcode.com" target="_blank" class="social-pill">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M13.483 0a1.374 1.374 0 00-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 00-1.209 2.104 5.35 5.35 0 00-.125.513 5.527 5.527 0 00.062 2.362 5.83 5.83 0 00.349 1.017 5.938 5.938 0 001.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 00-1.951-.003l-2.396 2.392a3.021 3.021 0 01-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 01.066-.523 2.545 2.545 0 01.619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 00-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l1.954-2.096A.4.4 0 0114.4.72L13.483 0z" fill="#FFA116"/><path d="M20.811 13.01H10.666c-.702 0-1.27.604-1.27 1.346s.568 1.346 1.27 1.346h10.145c.701 0 1.27-.604 1.27-1.346s-.569-1.346-1.27-1.346z" fill="#B3B3B3"/></svg>
-        LeetCode
-      </a>
-      <a href="mailto:falakkhandec03@gmail.com" class="social-pill">
-        <svg width="16" height="16" viewBox="0 0 24 18" fill="none"><path d="M0 2.4C0 1.075 1.075 0 2.4 0H21.6C22.925 0 24 1.075 24 2.4V15.6C24 16.925 22.925 18 21.6 18H2.4C1.075 18 0 16.925 0 15.6V2.4Z" fill="white"/><path d="M2.4 0L12 9L21.6 0" stroke="#EA4335" stroke-width="1.5" fill="none"/></svg>
-        falakkhandec03@gmail.com
-      </a>
-    </div>
-  </div>
-
-  <!-- HERO ILLUSTRATION -->
-  <div class="hero-illo">
-    <div class="illo-wrap">
-      <div class="illo-bg-blob"></div>
-      <div class="illo-ring"></div>
-
-      <span class="sparkle" style="top:28px;right:55px;--dur:2.8s;--delay:0s;--tx:6px;--ty:-14px;color:var(--accent)">✦</span>
-      <span class="sparkle" style="top:110px;right:18px;--dur:3.5s;--delay:.6s;--tx:8px;--ty:-10px;font-size:.7rem;color:var(--accent2);">★</span>
-      <span class="sparkle" style="bottom:110px;left:28px;--dur:3s;--delay:.3s;--tx:-6px;--ty:-12px;color:var(--accent3);">✦</span>
-      <span class="sparkle" style="bottom:55px;right:38px;--dur:4s;--delay:1s;--tx:4px;--ty:-8px;color:var(--accent4);font-size:.7rem;">★</span>
-      <span class="sparkle" style="top:195px;left:8px;--dur:2.5s;--delay:.8s;--tx:-4px;--ty:-10px;color:var(--accent5);font-size:.65rem;">✦</span>
-
-      <!-- Girl at laptop SVG -->
-      <svg class="phone-svg" width="440" height="440" viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
-        <defs>
-          <radialGradient id="sceneGlow" cx="50%" cy="55%" r="50%">
-            <stop offset="0%" stop-color="rgba(15,98,254,0.13)"/>
-            <stop offset="100%" stop-color="transparent"/>
-          </radialGradient>
-          <linearGradient id="deskGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#c8d8f8"/>
-            <stop offset="100%" stop-color="#a0b8e8"/>
-          </linearGradient>
-          <linearGradient id="screenGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#0a1628"/>
-            <stop offset="100%" stop-color="#0d1e38"/>
-          </linearGradient>
-          <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#e8b89a"/>
-            <stop offset="100%" stop-color="#d49070"/>
-          </linearGradient>
-          <linearGradient id="shirtGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#4589ff"/>
-            <stop offset="100%" stop-color="#2d5be3"/>
-          </linearGradient>
-          <linearGradient id="chairGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#6929c4"/>
-            <stop offset="100%" stop-color="#4a1d96"/>
-          </linearGradient>
-          <linearGradient id="hairGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#2c1a0e"/>
-            <stop offset="100%" stop-color="#1a0f08"/>
-          </linearGradient>
-          <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(15,98,254,0.2)"/>
-          </filter>
-          <filter id="msgShadow" x="-10%" y="-10%" width="120%" height="120%">
-            <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(15,98,254,0.35)"/>
-          </filter>
-          <clipPath id="screenClip">
-            <rect x="148" y="148" width="168" height="108" rx="4"/>
-          </clipPath>
-        </defs>
-
-        <style>
-          /* whole scene gentle float */
-          .scene { animation: sceneFloat 5s ease-in-out infinite; transform-origin: 220px 300px; }
-          /* head bob */
-          .girlHead { animation: headBob 4s ease-in-out infinite; transform-origin: 220px 195px; }
-          /* arm typing */
-          .armRight { animation: armType 0.5s ease-in-out infinite alternate; transform-origin: 240px 270px; }
-          .armLeft  { animation: armTypeL 0.6s 0.1s ease-in-out infinite alternate; transform-origin: 195px 268px; }
-          /* cursor blink on screen */
-          .cur { animation: blinkCur 1s step-end infinite; }
-          /* code line reveal */
-          .cLine1 { animation: codeReveal 0.5s 0.4s ease both; }
-          .cLine2 { animation: codeReveal 0.5s 0.9s ease both; }
-          .cLine3 { animation: codeReveal 0.5s 1.4s ease both; }
-          .cLine4 { animation: codeReveal 0.5s 1.9s ease both; }
-          /* message pop-up */
-          .msgPopup { animation: msgPop 4s 1.5s ease-in-out infinite; transform-origin: 320px 120px; }
-          /* notification dot pulse */
-          .notifDot { animation: notifPulse 1.5s ease-in-out infinite; }
-          /* twinkling stars */
-          .tw1 { animation: twinkStar 2.4s ease-in-out infinite; }
-          .tw2 { animation: twinkStar 3s 0.7s ease-in-out infinite; }
-          .tw3 { animation: twinkStar 2s 1.3s ease-in-out infinite; }
-          /* coffee steam */
-          .steam1 { animation: steamRise 2s 0s ease-in-out infinite; }
-          .steam2 { animation: steamRise 2s 0.5s ease-in-out infinite; }
-          .steam3 { animation: steamRise 2s 1s ease-in-out infinite; }
-
-          @keyframes sceneFloat {
-            0%,100% { transform: translateY(0px); }
-            50%     { transform: translateY(-10px); }
-          }
-          @keyframes headBob {
-            0%,100% { transform: rotate(0deg) translateY(0); }
-            25%     { transform: rotate(-2deg) translateY(-1px); }
-            75%     { transform: rotate(1deg) translateY(0); }
-          }
-          @keyframes armType {
-            0%   { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(-3px) rotate(-1deg); }
-          }
-          @keyframes armTypeL {
-            0%   { transform: translateY(0px); }
-            100% { transform: translateY(-2px); }
-          }
-          @keyframes blinkCur {
-            0%,100% { opacity: 1; }
-            50%     { opacity: 0; }
-          }
-          @keyframes codeReveal {
-            from { opacity: 0; transform: translateX(-6px); }
-            to   { opacity: 1; transform: none; }
-          }
-          @keyframes msgPop {
-            0%,100% { opacity: 0; transform: scale(0.7) translateY(10px); }
-            15%,85% { opacity: 1; transform: scale(1) translateY(0px); }
-          }
-          @keyframes notifPulse {
-            0%,100% { transform: scale(1); opacity: 1; }
-            50%     { transform: scale(1.4); opacity: 0.7; }
-          }
-          @keyframes twinkStar {
-            0%,100% { opacity: 0.4; transform: scale(1); }
-            50%     { opacity: 1;   transform: scale(1.6); }
-          }
-          @keyframes steamRise {
-            0%   { transform: translateY(0)   opacity(1);   }
-            100% { transform: translateY(-14px) opacity(0); }
-          }
-        </style>
-
-        <!-- Background glow -->
-        <circle cx="220" cy="240" r="200" fill="url(#sceneGlow)"/>
-
-        <!-- ═══ SCENE GROUP (floats as one) ═══ -->
-        <g class="scene">
-
-          <!-- ── DESK ── -->
-          <rect x="80" y="302" width="290" height="18" rx="6" fill="url(#deskGrad)" filter="url(#softShadow)"/>
-          <rect x="80" y="316" width="290" height="6" rx="3" fill="rgba(100,140,220,0.35)"/>
-
-          <!-- Desk legs -->
-          <rect x="100" y="320" width="10" height="55" rx="4" fill="#b0c8e8"/>
-          <rect x="340" y="320" width="10" height="55" rx="4" fill="#b0c8e8"/>
-
-          <!-- ── CHAIR ── -->
-          <!-- Chair back -->
-          <rect x="185" y="238" width="68" height="72" rx="12" fill="url(#chairGrad)" opacity="0.85"/>
-          <rect x="193" y="246" width="52" height="56" rx="8" fill="rgba(255,255,255,0.08)"/>
-          <!-- Chair seat -->
-          <rect x="178" y="298" width="82" height="22" rx="8" fill="#5a22b0"/>
-          <!-- Chair base/pole -->
-          <rect x="213" y="318" width="12" height="20" rx="4" fill="#4a1d96"/>
-          <ellipse cx="219" cy="338" rx="28" ry="6" fill="#3a1580"/>
-
-          <!-- ── LAPTOP ── -->
-          <!-- Screen bezel -->
-          <rect x="140" y="140" width="188" height="128" rx="10" fill="#1c2a44" filter="url(#softShadow)"/>
-          <!-- Screen -->
-          <rect x="148" y="148" width="172" height="112" rx="5" fill="url(#screenGrad)"/>
-          <!-- Screen glow -->
-          <rect x="148" y="148" width="172" height="112" rx="5" fill="rgba(69,137,255,0.04)"/>
-          <!-- Webcam dot -->
-          <circle cx="234" cy="145" r="3" fill="#2a3a5a"/>
-          <circle cx="234" cy="145" r="1.5" fill="#0f62fe" opacity="0.6"/>
-
-          <!-- Code on screen -->
-          <g clip-path="url(#screenClip)">
-            <text class="cLine1" x="156" y="168" font-family="monospace" font-size="9" fill="#4589ff">fun</text>
-            <text class="cLine1" x="176" y="168" font-family="monospace" font-size="9" fill="#e4ecf7"> buildApp() {</text>
-            <text class="cLine2" x="163" y="182" font-family="monospace" font-size="8.5" fill="#42be65">  val ui</text>
-            <text class="cLine2" x="198" y="182" font-family="monospace" font-size="8.5" fill="#e4ecf7"> = </text>
-            <text class="cLine2" x="208" y="182" font-family="monospace" font-size="8.5" fill="#be95ff">Compose()</text>
-            <text class="cLine3" x="163" y="196" font-family="monospace" font-size="8.5" fill="#42be65">  val db</text>
-            <text class="cLine3" x="198" y="196" font-family="monospace" font-size="8.5" fill="#e4ecf7"> = </text>
-            <text class="cLine3" x="208" y="196" font-family="monospace" font-size="8.5" fill="#be95ff">Room()</text>
-            <text class="cLine4" x="156" y="210" font-family="monospace" font-size="9" fill="#e4ecf7">}</text>
-            <text class="cur" x="164" y="224" font-family="monospace" font-size="9" fill="#4589ff">▋</text>
-          </g>
-
-          <!-- Laptop hinge -->
-          <rect x="140" y="266" width="188" height="5" rx="2" fill="#0d1628"/>
-          <!-- Laptop base -->
-          <rect x="132" y="269" width="204" height="14" rx="5" fill="#1c2a44"/>
-          <!-- Touchpad -->
-          <rect x="206" y="274" width="56" height="6" rx="3" fill="rgba(69,137,255,0.2)"/>
-
-          <!-- ── COFFEE MUG ── -->
-          <rect x="332" y="278" width="28" height="28" rx="5" fill="#fff" stroke="#d0e0f8" stroke-width="1.5"/>
-          <rect x="332" y="278" width="28" height="10" rx="4" fill="#c8e0ff"/>
-          <path d="M360 288 Q368 288 368 294 Q368 300 360 300" stroke="#d0e0f8" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <!-- Steam -->
-          <path class="steam1" d="M341 274 Q343 270 341 266" stroke="#4589ff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
-          <path class="steam2" d="M347 273 Q349 269 347 265" stroke="#4589ff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.4"/>
-          <path class="steam3" d="M353 274 Q355 270 353 266" stroke="#4589ff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
-
-          <!-- ── GIRL ── -->
-          <!-- Body / torso (shirt) -->
-          <ellipse cx="219" cy="283" rx="34" ry="22" fill="url(#shirtGrad)"/>
-          <!-- Collar detail -->
-          <path d="M206 262 Q219 270 232 262" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
-
-          <!-- LEFT ARM (typing) -->
-          <g class="armLeft">
-            <path d="M188 272 Q178 278 175 294" stroke="#d49070" stroke-width="9" stroke-linecap="round" fill="none"/>
-            <!-- Left hand on keyboard -->
-            <ellipse cx="174" cy="296" rx="9" ry="6" fill="#d49070"/>
-          </g>
-
-          <!-- RIGHT ARM (typing) -->
-          <g class="armRight">
-            <path d="M250 272 Q262 278 265 293" stroke="#d49070" stroke-width="9" stroke-linecap="round" fill="none"/>
-            <!-- Right hand on keyboard -->
-            <ellipse cx="266" cy="295" rx="9" ry="6" fill="#d49070"/>
-          </g>
-
-          <!-- HEAD GROUP -->
-          <g class="girlHead">
-            <!-- Hair back -->
-            <ellipse cx="219" cy="208" rx="30" ry="34" fill="url(#hairGrad)"/>
-            <!-- Long hair strands flowing back -->
-            <path d="M190 208 Q183 228 186 250 Q189 258 193 256" stroke="#2c1a0e" stroke-width="8" fill="none" stroke-linecap="round"/>
-            <path d="M248 208 Q255 228 252 250 Q249 258 245 256" stroke="#2c1a0e" stroke-width="8" fill="none" stroke-linecap="round"/>
-
-            <!-- Face -->
-            <ellipse cx="219" cy="205" rx="24" ry="27" fill="url(#bodyGrad)"/>
-
-            <!-- Hair top/front -->
-            <path d="M196 193 Q200 178 219 176 Q238 178 242 193" fill="url(#hairGrad)"/>
-            <!-- Hair side part -->
-            <path d="M196 192 Q198 185 208 182" stroke="#1a0f08" stroke-width="2" fill="none"/>
-
-            <!-- Eyes -->
-            <!-- Left eye -->
-            <ellipse cx="211" cy="203" rx="4.5" ry="5" fill="white"/>
-            <ellipse cx="211" cy="204" rx="3" ry="3.5" fill="#2c1a0e"/>
-            <circle cx="212.5" cy="202.5" r="1" fill="white"/>
-            <!-- Right eye -->
-            <ellipse cx="227" cy="203" rx="4.5" ry="5" fill="white"/>
-            <ellipse cx="227" cy="204" rx="3" ry="3.5" fill="#2c1a0e"/>
-            <circle cx="228.5" cy="202.5" r="1" fill="white"/>
-            <!-- Eyelashes left -->
-            <path d="M207 199 Q208 197 210 198" stroke="#1a0f08" stroke-width="1" fill="none" stroke-linecap="round"/>
-            <path d="M209 198 Q210 196 212 197" stroke="#1a0f08" stroke-width="1" fill="none" stroke-linecap="round"/>
-            <!-- Eyelashes right -->
-            <path d="M223 199 Q224 197 226 198" stroke="#1a0f08" stroke-width="1" fill="none" stroke-linecap="round"/>
-            <path d="M225 198 Q226 196 228 197" stroke="#1a0f08" stroke-width="1" fill="none" stroke-linecap="round"/>
-
-            <!-- Eyebrows -->
-            <path d="M206 197 Q210 194 214 196" stroke="#2c1a0e" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-            <path d="M222 196 Q226 194 230 197" stroke="#2c1a0e" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-
-            <!-- Nose -->
-            <path d="M217 208 Q219 213 221 208" stroke="#c07a5a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-
-            <!-- Smile (happy, looking at screen) -->
-            <path d="M212 217 Q219 223 226 217" stroke="#c07a5a" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-
-            <!-- Ear -->
-            <ellipse cx="195" cy="207" rx="4" ry="6" fill="#d49070"/>
-            <ellipse cx="243" cy="207" rx="4" ry="6" fill="#d49070"/>
-
-            <!-- Earring left -->
-            <circle cx="195" cy="213" r="2" fill="#4589ff"/>
-            <!-- Earring right -->
-            <circle cx="243" cy="213" r="2" fill="#4589ff"/>
-
-            <!-- Neck -->
-            <rect x="213" y="228" width="12" height="16" rx="5" fill="#d49070"/>
-          </g>
-        </g>
-
-        <!-- ═══ MESSAGE POP-UP (animates independently, outside scene) ═══ -->
-        <g class="msgPopup" filter="url(#msgShadow)">
-          <!-- Popup card -->
-          <rect x="270" y="88" width="148" height="72" rx="14" fill="#ffffff" stroke="rgba(15,98,254,0.25)" stroke-width="1.5"/>
-          <!-- Blue top accent bar -->
-          <rect x="270" y="88" width="148" height="5" rx="14" fill="url(#shirtGrad)"/>
-          <rect x="270" y="93" width="148" height="5" fill="url(#shirtGrad)"/>
-          <rect x="270" y="88" width="148" height="14" rx="7" fill="#0f62fe"/>
-
-          <!-- Avatar circle in popup -->
-          <circle cx="291" cy="124" r="14" fill="rgba(15,98,254,0.12)" stroke="rgba(15,98,254,0.3)" stroke-width="1.5"/>
-          <text x="291" y="129" font-size="13" text-anchor="middle">👩‍💻</text>
-
-          <!-- Message text lines -->
-          <rect x="312" y="114" width="80" height="7" rx="3.5" fill="rgba(15,98,254,0.7)"/>
-          <rect x="312" y="126" width="60" height="6" rx="3" fill="rgba(105,41,196,0.4)"/>
-          <rect x="312" y="137" width="70" height="5" rx="2.5" fill="rgba(15,98,254,0.2)"/>
-
-          <!-- Notification dot -->
-          <circle class="notifDot" cx="413" cy="92" r="7" fill="#fa4d56"/>
-          <text x="413" y="96" font-family="sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="bold">1</text>
-
-          <!-- Tail / pointer -->
-          <path d="M296 160 L306 154 L286 154 Z" fill="#ffffff"/>
-          <path d="M295 161 L286 154" stroke="rgba(15,98,254,0.2)" stroke-width="1" fill="none"/>
-          <path d="M297 161 L306 154" stroke="rgba(15,98,254,0.2)" stroke-width="1" fill="none"/>
-        </g>
-
-        <!-- ═══ SPARKLE STARS ═══ -->
-        <text class="tw1" x="90"  y="170" font-size="13" fill="#0f62fe" opacity="0.6">✦</text>
-        <text class="tw2" x="348" y="200" font-size="10" fill="#6929c4" opacity="0.5">★</text>
-        <text class="tw3" x="68"  y="300" font-size="9"  fill="#00a651" opacity="0.55">✦</text>
-        <text class="tw1" x="360" y="340" font-size="11" fill="#fa4d56" opacity="0.45">●</text>
-        <text class="tw2" x="72"  y="380" font-size="8"  fill="#0072c3" opacity="0.5">✦</text>
-
-        <!-- Ground shadow -->
-        <ellipse cx="220" cy="378" rx="120" ry="10" fill="rgba(15,98,254,0.08)"/>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-tag">What I Do</div>
-  <h2 class="section-title">Skills &amp; Tools</h2>
-  <p class="section-sub">Android developer and software engineering aspirant — building reactive offline-first apps, writing clean OOP systems, and tackling complex DSA problems.</p>
-  <div class="skills-grid reveal">
-    <div class="skill-card">
-      <div class="skill-icon">📱</div>
-      <h3>Android Development</h3>
-      <div class="skill-tags">
-        <span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">Android SDK</span><span class="tag">ExoPlayer</span><span class="tag">Room</span><span class="tag">WorkManager</span><span class="tag">Retrofit</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🏗️</div>
-      <h3>Architecture &amp; Patterns</h3>
-      <div class="skill-tags">
-        <span class="tag pink">MVVM</span><span class="tag pink">Clean Architecture</span><span class="tag pink">State Pattern</span><span class="tag pink">Coroutines</span><span class="tag pink">Kotlin Flow</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">⚙️</div>
-      <h3>Languages &amp; Backend</h3>
-      <div class="skill-tags">
-        <span class="tag green">Java</span><span class="tag green">Kotlin</span><span class="tag green">C</span><span class="tag green">Python</span><span class="tag green">MySQL</span><span class="tag green">Node.js</span><span class="tag green">Express.js</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🛠️</div>
-      <h3>Tools &amp; Testing</h3>
-      <div class="skill-tags">
-        <span class="tag yellow">Android Studio</span><span class="tag yellow">Git</span><span class="tag yellow">JUnit 5</span><span class="tag yellow">Postman</span><span class="tag yellow">IntelliJ IDEA</span><span class="tag yellow">VS Code</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🚀</div>
-      <h3>SDE &amp; Problem Solving</h3>
-      <div class="skill-tags">
-        <span class="tag">DSA</span><span class="tag">OOP</span><span class="tag">System Design</span><span class="tag">Firebase</span><span class="tag">REST APIs</span><span class="tag">MediaPipe</span><span class="tag">TensorFlow Lite</span>
-      </div>
-    </div>
-  </div>
-  <div class="prof-section reveal">
-    <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.4rem;margin-bottom:1.5rem;">Proficiency</h3>
-    <div style="max-width:600px;">
-      <div class="prof-row"><div class="prof-label"><span>Android Development (Kotlin / Compose)</span><span style="color:var(--accent)">90%</span></div><div class="prof-bar"><div class="prof-fill" style="width:90%"></div></div></div>
-      <div class="prof-row"><div class="prof-label"><span>Java &amp; OOP / Design Patterns</span><span style="color:var(--accent)">87%</span></div><div class="prof-bar"><div class="prof-fill" style="width:87%"></div></div></div>
-      <div class="prof-row"><div class="prof-label"><span>Clean Architecture &amp; MVVM</span><span style="color:var(--accent)">84%</span></div><div class="prof-bar"><div class="prof-fill" style="width:84%"></div></div></div>
-      <div class="prof-row"><div class="prof-label"><span>Data Structures &amp; Algorithms</span><span style="color:var(--accent)">79%</span></div><div class="prof-bar"><div class="prof-fill" style="width:79%"></div></div></div>
-      <div class="prof-row"><div class="prof-label"><span>Backend &amp; REST APIs</span><span style="color:var(--accent)">70%</span></div><div class="prof-bar"><div class="prof-fill" style="width:70%"></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-tag">My Work</div>
-  <h2 class="section-title">Projects</h2>
-  <p class="section-sub">From full-stack VOD streaming and on-device AI fitness apps to priority queue hospital systems and State-Pattern vending machines — built clean and tested thoroughly.</p>
-  <div class="projects-grid reveal">
-
-    <div class="project-card">
-      <div class="proj-num">01</div>
-      <span class="proj-tab-label tab-se">SDE · Java</span>
-      <div class="proj-icon">🏥</div>
-      <div class="proj-title">HospitalOpdQueueSys</div>
-      <p class="proj-desc">Hospital OPD system using a priority queue to schedule patients by severity (1–5) and arrival time.</p>
-      <ul class="proj-bullets">
-        <li>Priority queue-based scheduling with severity × arrival time tie-breaking</li>
-        <li>Token lifecycle and doctor-patient workflow management</li>
-        <li>39+ JUnit 5 unit tests covering all edge cases including wait-time estimation</li>
-      </ul>
-      <div class="proj-stack"><span>Java</span><span>JUnit 5</span><span>Priority Queue</span></div>
-      <a href="#" class="proj-link">View on GitHub →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="proj-num">02</div>
-      <span class="proj-tab-label tab-se">SDE · Java + JavaFX</span>
-      <div class="proj-icon">🥤</div>
-      <div class="proj-title">VendMac</div>
-      <p class="proj-desc">Vending machine simulation using OOP and the State Design Pattern, managing 3+ states and 10+ products.</p>
-      <ul class="proj-bullets">
-        <li>State Design Pattern with 3+ states and full inventory / transaction handling</li>
-        <li>Multithreading for 30-second session timeout via daemon threads</li>
-        <li>Greedy algorithm for optimised change calculation, eliminating precision errors</li>
-      </ul>
-      <div class="proj-stack"><span>Java</span><span>JavaFX</span><span>JUnit 5</span><span>Maven</span><span>State Pattern</span></div>
-      <a href="#" class="proj-link">View on GitHub →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="proj-num">03</div>
-      <span class="proj-tab-label tab-android">Android · Full Stack</span>
-      <div class="proj-icon">🎬</div>
-      <div class="proj-title">PlayBox2 — Full Stack VOD</div>
-      <p class="proj-desc">Full-stack video-on-demand Android app with MVVM architecture, category browsing, and smooth ExoPlayer playback.</p>
-      <ul class="proj-bullets">
-        <li>Node.js + Express.js REST backend with chunked video uploads and range-request streaming</li>
-        <li>Offline caching with Room and WorkManager for reliable background sync</li>
-        <li>ExoPlayer integration with MVVM for seamless streaming experience</li>
-      </ul>
-      <div class="proj-stack"><span>Kotlin</span><span>Jetpack Compose</span><span>ExoPlayer</span><span>Node.js</span><span>Express.js</span><span>Room</span></div>
-      <a href="#" class="proj-link">View on GitHub →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="proj-num">04</div>
-      <span class="proj-tab-label tab-android">Android · AI / ML</span>
-      <div class="proj-icon">🏃</div>
-      <div class="proj-title">Aarogya — AI Fitness App</div>
-      <p class="proj-desc">AI-based fitness app with real-time pose detection providing instant exercise feedback. Team of 5.</p>
-      <ul class="proj-bullets">
-        <li>On-device pose detection via MediaPipe processing live camera frames</li>
-        <li>Wear OS step tracking integration with persistent local storage</li>
-        <li>Activity monitoring with real-time feedback during workout sessions</li>
-      </ul>
-      <div class="proj-stack"><span>Kotlin</span><span>Jetpack Compose</span><span>MediaPipe</span><span>Wear OS</span></div>
-      <a href="#" class="proj-link">View on GitHub →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="proj-num">05</div>
-      <span class="proj-tab-label tab-android">Android · AI / ML</span>
-      <div class="proj-icon">🌊</div>
-      <div class="proj-title">Nature Lens App</div>
-      <p class="proj-desc">AI-powered Android app for on-device marine species detection with offline inference. Team of 4.</p>
-      <ul class="proj-bullets">
-        <li>TensorFlow Lite model for on-device detection of marine species — fully offline</li>
-        <li>CameraX integration with GPS tagging for real-time image capture</li>
-        <li>Location-based reporting pipeline for environmental monitoring</li>
-      </ul>
-      <div class="proj-stack"><span>Kotlin</span><span>Compose</span><span>TensorFlow Lite</span><span>CameraX</span><span>GPS</span></div>
-      <a href="#" class="proj-link">View on GitHub →</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ACHIEVEMENTS -->
-<section id="achievements">
-  <div class="section-tag">Recognition</div>
-  <h2 class="section-title">Achievements</h2>
-  <p class="section-sub">Building at hackathons, contributing to technical clubs, and constantly pushing boundaries in competitive coding and innovation.</p>
-  <div class="achieve-grid reveal">
-    <div class="achieve-card">
-      <div class="achieve-arrow">🏆</div>
-      <h3>Sprint4Good AI Hackathon — IIT Delhi</h3>
-      <p>Competed among 50+ teams nationwide at IIT Delhi (2026), showcasing Android and AI capabilities on a national stage.</p>
-    </div>
-    <div class="achieve-card">
-      <div class="achieve-arrow">⚡</div>
-      <h3>Code Wizard Hackathon — SRMIST</h3>
-      <p>Ranked in the top 25% of 40 teams at SRMIST (2025), demonstrating strong problem-solving and rapid development skills.</p>
-    </div>
-    <div class="achieve-card">
-      <div class="achieve-arrow">🤝</div>
-      <h3>BitBox 5.0 Hackathon — JIIT</h3>
-      <p>Collaborated with a 4-member team at Jaypee Institute of Information Technology (2025), building under competitive conditions.</p>
-    </div>
-    <div class="achieve-card">
-      <div class="achieve-arrow">🌱</div>
-      <h3>INNOGEEKS — Technical Club, KIET</h3>
-      <p>Active member since Nov 2023. Engineered 6+ Android projects using Jetpack Compose, Kotlin &amp; Firebase. Coordinated a team of 4 members.</p>
-    </div>
-  </div>
-  <div class="cert-list reveal" style="margin-top:4rem;">
-    <h3 style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.4rem;margin-bottom:1rem;">Certifications</h3>
-    <div class="cert-item">
-      <div class="cert-icon">☁️</div>
-      <div><div class="cert-title">AWS Certified Cloud Practitioner</div><div class="cert-issuer">Amazon Web Services</div></div>
-    </div>
-    <div class="cert-item">
-      <div class="cert-icon">🌐</div>
-      <div><div class="cert-title">Network Technician Certification</div><div class="cert-issuer">Cisco Networking Academy</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section id="education">
-  <div class="section-tag">Background</div>
-  <h2 class="section-title">Education</h2>
-  <div class="edu-cards reveal">
-    <div class="edu-card">
-      <div class="edu-logo">🎓</div>
-      <div>
-        <div class="edu-name">KIET Group of Institutions</div>
-        <div class="edu-degree">B.Tech in Computer Science &amp; Engineering · CGPA 8.6</div>
-        <div class="edu-dates">October 2023 — May 2027 · Ghaziabad, UP</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div>
-    <div class="section-tag">Get In Touch</div>
-    <h2 class="contact-title">Let's Build Something <span style="color:var(--accent)">Amazing</span> Together</h2>
-    <p class="contact-sub">Interested in SDE roles, Android collaborations, or just want to talk tech? My inbox is always open!</p>
-    <a href="mailto:falakkhandec03@gmail.com" class="contact-email">
-      <svg width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="24" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M1 4l12 8 12-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg>
-      falakkhandec03@gmail.com
-    </a>
-    <div class="contact-socials">
-      <a href="tel:+919335228916" class="social-pill">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="12" fill="#25D366"/><path d="M16.75 14.33c-.32-.16-1.88-.93-2.17-1.03-.29-.1-.5-.16-.71.16-.21.32-.81 1.03-.99 1.24-.18.21-.36.24-.68.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.55.16-.18.21-.32.32-.53.1-.21.05-.4-.03-.55-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.53-.71-.54-.18-.01-.4-.01-.61-.01-.21 0-.55.08-.84.4-.29.32-1.1 1.07-1.1 2.62 0 1.54 1.12 3.03 1.28 3.24.16.21 2.21 3.38 5.36 4.74.75.32 1.33.51 1.79.66.75.24 1.44.2 1.98.12.6-.09 1.88-.77 2.14-1.51.26-.74.26-1.38.18-1.51-.08-.13-.29-.21-.61-.37z" fill="white"/></svg>
-        +91 93352 28916
-      </a>
-      <a href="https://linkedin.com" target="_blank" class="social-pill">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0A66C2"/><path d="M7.2 9.6H4.8V19.2H7.2V9.6Z" fill="white"/><circle cx="6" cy="6.6" r="1.4" fill="white"/><path d="M19.2 13.2c0-2.2-1.1-3.6-3.1-3.6-1 0-1.9.5-2.3 1.3V9.6H11.4v9.6h2.4v-5.1c0-1.1.6-1.8 1.6-1.8.9 0 1.4.6 1.4 1.8v5.1H19.2V13.2z" fill="white"/></svg>
-        LinkedIn
-      </a>
-      <a href="https://github.com" target="_blank" class="social-pill">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-        GitHub
-      </a>
-      <a href="https://leetcode.com" target="_blank" class="social-pill">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M13.483 0a1.374 1.374 0 00-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 00-1.209 2.104 5.35 5.35 0 00-.125.513 5.527 5.527 0 00.062 2.362 5.83 5.83 0 00.349 1.017 5.938 5.938 0 001.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 00-1.951-.003l-2.396 2.392a3.021 3.021 0 01-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 01.066-.523 2.545 2.545 0 01.619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 00-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l1.954-2.096A.4.4 0 0114.4.72L13.483 0z" fill="#FFA116"/><path d="M20.811 13.01H10.666c-.702 0-1.27.604-1.27 1.346s.568 1.346 1.27 1.346h10.145c.701 0 1.27-.604 1.27-1.346s-.569-1.346-1.27-1.346z" fill="#B3B3B3"/></svg>
-        LeetCode
-      </a>
-    </div>
-  </div>
-
-  <!-- Animated Envelope -->
-  <div class="envelope-illo reveal">
-    <svg width="340" height="300" viewBox="0 0 340 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
-      <circle r="4" fill="#0f62fe" opacity=".7">
-        <animateMotion dur="6s" repeatCount="indefinite" path="M170,150 m-90,0 a90,60 0 1,1 180,0 a90,60 0 1,1 -180,0"/>
-      </circle>
-      <circle r="3" fill="#00a651" opacity=".7">
-        <animateMotion dur="8s" repeatCount="indefinite" begin="-4s" path="M170,150 m-90,0 a90,60 0 1,1 180,0 a90,60 0 1,1 -180,0"/>
-      </circle>
-      <circle r="3" fill="#6929c4" opacity=".6">
-        <animateMotion dur="10s" repeatCount="indefinite" begin="-2s" path="M170,150 m-90,0 a90,60 0 1,1 180,0 a90,60 0 1,1 -180,0"/>
-      </circle>
-      <ellipse cx="170" cy="278" rx="110" ry="14" fill="rgba(15,98,254,.09)"/>
-      <g class="env-group">
-        <g class="letter-group">
-          <rect x="108" y="30" width="124" height="110" rx="7" fill="#ffffff" stroke="rgba(15,98,254,.25)" stroke-width="1.5"/>
-          <rect x="122" y="50" width="70" height="5" rx="2.5" fill="#4589ff"/>
-          <rect x="122" y="62" width="96" height="3.5" rx="2" fill="#ddd"/>
-          <rect x="122" y="72" width="86" height="3.5" rx="2" fill="#ddd"/>
-          <rect x="122" y="82" width="96" height="3.5" rx="2" fill="#ddd"/>
-          <rect x="122" y="92" width="74" height="3.5" rx="2" fill="#ddd"/>
-          <rect x="122" y="102" width="60" height="3.5" rx="2" fill="#ddd"/>
-        </g>
-        <rect x="40" y="88" width="260" height="168" rx="14" fill="#edf3ff" stroke="rgba(15,98,254,.3)" stroke-width="1.5"/>
-        <path d="M40 88 L170 162 L300 88" stroke="rgba(15,98,254,.45)" stroke-width="2" fill="none"/>
-        <path d="M40 88 L40 256 L130 172 Z" fill="rgba(15,98,254,.06)"/>
-        <path d="M300 88 L300 256 L210 172 Z" fill="rgba(15,98,254,.06)"/>
-        <path d="M40 256 L170 172 L300 256 Z" fill="rgba(15,98,254,.05)"/>
-      </g>
-      <text x="22" y="100" font-size="16" fill="#0f62fe" opacity=".5">
-        <animate attributeName="opacity" values=".5;1;.5" dur="2.2s" repeatCount="indefinite"/>✦
-      </text>
-      <text x="305" y="90" font-size="12" fill="#6929c4" opacity=".5">
-        <animate attributeName="opacity" values=".5;1;.5" dur="1.8s" repeatCount="indefinite"/>★
-      </text>
-      <text x="18" y="220" font-size="14" fill="#00a651" opacity=".45">
-        <animate attributeName="opacity" values=".45;1;.45" dur="3s" repeatCount="indefinite"/>●
-      </text>
-      <text x="308" y="200" font-size="12" fill="#fa4d56" opacity=".5">
-        <animate attributeName="opacity" values=".5;1;.5" dur="2.5s" repeatCount="indefinite"/>✦
-      </text>
-    </svg>
-  </div>
-</section>
-
-<footer>
-  <p>Designed &amp; Built by <span style="color:var(--accent);font-weight:600;">Falak Khan</span> · 2026 · Made with <svg width="18" height="18" viewBox="0 0 24 24" style="display:inline-block;vertical-align:middle;margin:0 2px;" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21C12 21 3 13.5 3 8a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-9 13-9 13z" fill="#fa4d56" stroke="#fa4d56" stroke-width="1.5" stroke-linejoin="round"/></svg> and lots of ☕</p>
-</footer>
 
 <script>
-/* ── THEME TOGGLE ── */
-const root   = document.documentElement;
-const toggle = document.getElementById('themeToggle');
-const icon   = toggle.querySelector('.icon');
-const label  = toggle.querySelector('.label');
+  const pages = ['home', 'projects', 'skills', 'contact'];
+  let currentPage = 'home';
 
-const saved = localStorage.getItem('falak-theme') || 'light';
-setTheme(saved);
+  function navigate(page) {
+    if (!pages.includes(page)) return;
+    pages.forEach(p => { document.getElementById('page-' + p).classList.remove('active'); });
+    document.getElementById('page-' + page).classList.add('active');
+    const homeHeader = document.getElementById('home-header');
+    const projectsHeader = document.getElementById('projects-header');
+    if (page === 'projects') {
+      homeHeader.style.display = 'none';
+      projectsHeader.classList.remove('hidden');
+      projectsHeader.style.display = 'flex';
+    } else {
+      homeHeader.style.display = 'flex';
+      projectsHeader.style.display = 'none';
+    }
+    pages.forEach(p => {
+      const el = document.getElementById('nav-' + p);
+      if (el) el.classList.toggle('active', p === page);
+    });
+    pages.forEach(p => {
+      const el = document.getElementById('mob-' + p);
+      if (el) el.classList.toggle('active', p === page);
+    });
+    const codeLeft  = document.getElementById('code-left');
+    const codeRight = document.getElementById('code-right');
+    if (page === 'home') {
+      codeLeft.style.display  = window.innerWidth >= 1024 ? 'block' : 'none';
+      codeRight.style.display = window.innerWidth >= 1024 ? 'block' : 'none';
+    } else {
+      codeLeft.style.display  = 'none';
+      codeRight.style.display = 'none';
+    }
+    currentPage = page;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => { animateSkillBars(); triggerScrollReveal(); }, 100);
+    history.replaceState(null, '', '#' + page);
+  }
 
-toggle.addEventListener('click', () => {
-  const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-  setTheme(next);
-  localStorage.setItem('falak-theme', next);
-});
+  function animateSkillBars() {
+    document.querySelectorAll('#page-' + currentPage + ' .skill-bar-fill:not(.animated)').forEach(bar => {
+      bar.classList.add('animated');
+    });
+  }
 
-function setTheme(theme) {
-  root.setAttribute('data-theme', theme);
-  if (theme === 'dark') { icon.textContent = '🌙'; label.textContent = 'Dark'; }
-  else                  { icon.textContent = '☀️'; label.textContent = 'Light'; }
-}
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-/* ── SCROLL REVEAL ── */
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }});
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  function triggerScrollReveal() {
+    document.querySelectorAll('#page-' + currentPage + ' [data-sr]').forEach(el => {
+      el.style.opacity = '0';
+      revealObserver.observe(el);
+    });
+  }
 
-/* ── ACTIVE NAV LINK ── */
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => { if(window.scrollY >= s.offsetTop - 120) current = s.id; });
-  navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#'+current ? 'var(--accent)' : ''; });
-});
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const filter = chip.dataset.filter;
+      document.querySelectorAll('.project-card[data-tags]').forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.tags.includes(filter)) ? 'flex' : 'none';
+      });
+    });
+  });
+
+  const phrases = [
+    "Jetpack Compose expert.",
+    "Building native experiences.",
+    "Spring Boot backend ready.",
+    "Open to new opportunities.",
+    "Let's build an app."
+  ];
+  let phraseIdx = 0, charIdx = 0;
+  const typingEl = document.getElementById('typing-text');
+
+  function type() {
+    if (!typingEl) return;
+    if (charIdx < phrases[phraseIdx].length) {
+      typingEl.textContent += phrases[phraseIdx].charAt(charIdx++);
+      setTimeout(type, 60);
+    } else { setTimeout(erase, 2200); }
+  }
+  function erase() {
+    if (!typingEl) return;
+    if (charIdx > 0) {
+      typingEl.textContent = phrases[phraseIdx].substring(0, --charIdx);
+      setTimeout(erase, 30);
+    } else {
+      phraseIdx = (phraseIdx + 1) % phrases.length;
+      setTimeout(type, 400);
+    }
+  }
+  setTimeout(type, 1200);
+
+  function updateCodeFloat() {
+    const show = window.innerWidth >= 1024;
+    document.getElementById('code-left').style.display  = (show && currentPage === 'home') ? 'block' : 'none';
+    document.getElementById('code-right').style.display = (show && currentPage === 'home') ? 'block' : 'none';
+  }
+  window.addEventListener('resize', updateCodeFloat);
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash.replace('#', '');
+    const startPage = pages.includes(hash) ? hash : 'home';
+    navigate(startPage);
+    updateCodeFloat();
+    setTimeout(animateSkillBars, 300);
+    setTimeout(triggerScrollReveal, 100);
+  });
 </script>
 </body>
 </html>
